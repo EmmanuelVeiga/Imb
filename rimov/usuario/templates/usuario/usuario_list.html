@@ -1,0 +1,89 @@
+{% load static %}
+{% load bootstrap3 %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Lista de Corretores</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <style>
+  .botoes-items {
+    display: inline-block;
+    margin-left: 900px;
+  }
+  </style>
+  <div class="container">
+    <div align="center">
+      <h2 id="cad">Corretores Cadastrados</h2>
+    </div>
+    <div class="botoes-items">
+      <div class="botoes">
+        <a href="{% url 'usuario:usuario_create' %}" class="btn btn-md btn-success">Cadastrar usuário</a>
+        <a href="/" class="btn btn-primary" role="button">Voltar</a>
+      </div>
+    </div>
+    <table class="table table-striped">
+</body>
+
+</html>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>Nº CRI</th>
+      <th>Foto</th>
+      <th>Email</th>
+      <th>Tipo</th>
+      <th>Ativo</th>
+      <th>Último acesso</th>
+      <th class="text-center">Editar</th>
+      <th class="text-center">Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for usuario in object_list %}
+    <tr>
+      <td>{{ usuario.id }}</td>
+      <td>{{ usuario.nome }}</td>
+      <td>{{ usuario.telefone }}</td>
+      <td>{{ usuario.numero_cri }}</td>
+      <td>
+        {% if usuario.avatar %}
+          <img src="{{ usuario.avatar.url }}" alt="" width="100px">
+        {% endif %}
+      </td>
+      <td>{{ usuario.email }}</td>
+      <td>{{ usuario.tipo }}</td>
+      <td>{{ usuario.is_active }}</td>
+      <td>{{ usuario.last_login|date:"d/m/Y H:i" }}</td>
+      <td class="text-left">
+        <a href="{{ usuario.get_absolute_url }}">
+          <i class="fa fa-edit fa-2x"></i>
+        </a>
+      </td>
+      <td class="text-center">
+        <a href="{{ usuario.get_absolute_url }}delete/">
+          <i class="fa fa-close fa-2x" style="color: red"></i>
+        </a>
+      </td>
+      <td>
+        {% if usuario.is_active %}
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

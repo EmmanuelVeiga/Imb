@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% load bootstrap %}
+{% block content %}
+
+
+<style>
+    input, textarea {
+    text-transform: uppercase;
+}
+</style>
+
+<div class="container">
+    <h1 style="text-align: center;">Cadastrar um novo Imóvel</h1>
+    <div>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.titulo | bootstrap}}
+            {{form.propriedade | bootstrap}}
+            {{form.negocio | bootstrap}}
+            {{form.categoria | bootstrap}}
+            <label for="imagens">Imagens:</label> <input type="file" name="imagens" multiple="">            
+            {{form.localizacao | bootstrap}}
+            {{form.endereco | bootstrap}}
+            {{form.area | bootstrap}}
+            {{form.num_quarto | bootstrap}}
+            {{form.num_banheiro | bootstrap}}
+            {{form.num_vaga | bootstrap}}
+            {{form.descricao | bootstrap}}
+            {{form.corretor | bootstrap}}
+            {{form.status | bootstrap}}
+            
+            <br>
+            <input type="button" value="Voltar" style="margin-left: 1100px;" class="btn btn-info" onClick="history.go(-1)">  <input type="submit" class="btn btn-success" value="Salvar">
+        	
+        </form>	
+    </div>
+</div>
+
+{% endblock %}

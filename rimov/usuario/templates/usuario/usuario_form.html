@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+{% block content %}
+<style>
+  input {
+    text-transform: uppercase;
+}
+</style>
+<div class="container">
+  <h1 style="text-align: center;">Cadastrar um novo Usuário</h1>
+  <div>
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.tipo | bootstrap}}
+      {{form.avatar | bootstrap}}
+      {{form.nome | bootstrap}}
+      {{form.numero_cri | bootstrap}}
+      {{form.telefone | bootstrap}}
+      {{form.email | bootstrap}}
+      {{form.password | bootstrap}}
+      <label>
+        <input type="checkbox" name="is_active" id="id_is_active">
+        <span>ATIVO</span>
+      </label>
+      <input type="button" value="Voltar" style="margin-left: 1100px;" class="btn btn-info" onClick="history.go(-1)"> <input type="submit" class="btn btn-success" value="Salvar">
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+<script>
+$(document).ready(function() {
+
+  var SPMaskBehavior = function(val) {
+      return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+    },
+    spOptions = {
+      onKeyPress: function(val, e, field, options) {
+        field.mask(SPMaskBehavior.apply({}, arguments), options);
+      }
+    };
+  $('#id_telefone').mask(SPMaskBehavior, spOptions);
+
+});
+</script>
+{% endblock %}

@@ -1,0 +1,972 @@
+{% load static %}
+<!DOCTYPE html5>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Ronaldo Santos Imóveis</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Property Search Section ======= -->
+  <div class="click-closed"></div>
+  <!--/ Form Search Star 
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Procurar Propriedades</h3>
+    </div>
+    <span class="close-box-collapse right-boxed ion-ios-close"></span>
+    <div class="box-collapse-wrap form">
+      <form class="form-a">
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <div class="form-group">
+              <label for="Type">Keyword</label>
+              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label for="Type">Type</label>
+              <select class="form-control form-control-lg form-control-a" id="Type">
+                <option>All Type</option>
+                <option>For Preço</option>
+                <option>For Sale</option>
+                <option>Open House</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label for="city">City</label>
+              <select class="form-control form-control-lg form-control-a" id="city">
+                <option>All City</option>
+                <option>Alabama</option>
+                <option>Arizona</option>
+                <option>California</option>
+                <option>Colorado</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label for="bedrooms">Bedrooms</label>
+              <select class="form-control form-control-lg form-control-a" id="bedrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label for="garages">Garages</label>
+              <select class="form-control form-control-lg form-control-a" id="garages">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label for="bathrooms">Bathrooms</label>
+              <select class="form-control form-control-lg form-control-a" id="bathrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label for="price">Min Price</label>
+              <select class="form-control form-control-lg form-control-a" id="price">
+                <option>Unlimite</option>
+                <option>R$:50,000</option>
+                <option>R$:100,000</option>
+                <option>R$:150,000</option>
+                <option>R$:200,000</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-b">Procurar Imóveis</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div> End Property Search Section -->
+
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="index.html"><img src="{% static 'assets/img/logoRS.jpg' %}" class="logoRS" width="135px"></a>
+      <!--<a class="navbar-brand text-brand" href="index.html">Ronaldo<span class="color-b">Santos</span></a>-->
+      <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
+        <span class="fa fa-key" aria-hidden="true"></span>
+      </button>
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="/index">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/team">Equipe</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pgrid">Imóveis</a>
+          </li>                   
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contatos</a>
+          </li>
+        </ul>
+      </div>
+      <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
+        <span class="fa fa-key" aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav><!-- End Header/Navbar -->
+
+  <!-- ======= Intro Section ======= -->  
+  <div class="intro intro-carousel">
+    <div id="carousel" class="owl-carousel owl-theme">
+      <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'assets/img/slide-1.jpg' %})">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <p class="intro-title-top">Doral, Florida
+                      <br> 78345</p>
+                    <h1 class="intro-title mb-4">
+                      <span class="color-b">204 </span> Mount
+                      <br> Olive Road Two</h1>
+                    <p class="intro-subtitle intro-price">
+                      <a href="#"><span class="price-a">Preço | R$: 12.000</span></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'assets/img/slide-2.jpg' %})">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <p class="intro-title-top">Doral, Florida
+                      <br> 78345</p>
+                    <h1 class="intro-title mb-4">
+                      <span class="color-b">204 </span> Rino
+                      <br> Venda Road Five</h1>
+                    <p class="intro-subtitle intro-price">
+                      <a href="#"><span class="price-a">Preço | R$: 12.000</span></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'assets/img/slide-3.jpg' %})">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <p class="intro-title-top">Doral, Florida
+                      <br> 78345</p>
+                    <h1 class="intro-title mb-4">
+                      <span class="color-b">204 </span> Alira
+                      <br> Roan Road One</h1>
+                    <p class="intro-subtitle intro-price">
+                      <a href="#"><span class="price-a">Preço | R$: 12.000</span></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- End Intro Section -->
+
+  <main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section class="section-services section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Nossos Serviços</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="fa fa-check-square-o"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">Assessoria</h2>
+                </div>
+              </div>
+              <div class="card-body-c">
+                <p class="content-c">
+                  Encontramos os melhores imóveis para você. Tenha a segurança de ser atendido por uma equipe totalmente preparada.
+                </p>
+              </div>
+              <div class="card-footer-c">                
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="fa fa-usd"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">Preço</h2>
+                </div>
+              </div>
+              <div class="card-body-c">
+                <p class="content-c">
+                  Nossos Clientes tem os melhores negócios com os melhores preços.
+                </p>
+              </div>
+              <div class="card-footer-c">                
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="fa fa-home"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">Documentos</h2>
+                </div>
+              </div>
+              <div class="card-body-c">
+                <p class="content-c">
+                  Acessoramos você com todas as informáções referente a documentação necessária.
+                </p>
+              </div>
+              <div class="card-footer-c">                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Latest Properties Section ======= -->
+    <section class="section-property section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Negócios Recentes</h2>
+              </div>
+              <div class="title-link">
+                <a href="property-grid.html">Todos Imóveis
+                  <span class="ion-ios-arrow-forward"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="property-carousel" class="owl-carousel owl-theme">
+          <div class="carousel-item-b">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{% static 'assets/img/property-6.jpg' %}" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="property-single.html">206 Mount
+                        <br /> Olive Road Two</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">Preço | R$: 12.000</span>
+                    </div>
+                    <a href="#" class="link-a">Clique aqui para ver
+                      <span class="ion-ios-arrow-forward"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Área</h4>
+                        <span>340m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Banheiros</h4>
+                        <span>2</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Quartos</h4>
+                        <span>4</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Garagem</h4>
+                        <span>1</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item-b">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{% static 'assets/img/property-3.jpg' %}" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="property-single.html">157 West
+                        <br /> Central Park</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">Preço | R$: 12.000</span>
+                    </div>
+                    <a href="property-single.html" class="link-a">Clique aqui para ver
+                      <span class="ion-ios-arrow-forward"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Área</h4>
+                        <span>340m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Banheiros</h4>
+                        <span>2</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Quartos</h4>
+                        <span>4</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Garagem</h4>
+                        <span>1</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item-b">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{% static 'assets/img/property-7.jpg' %}" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="property-single.html">245 Azabu
+                        <br /> Nishi Park let</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">Preço | R$: 12.000</span>
+                    </div>
+                    <a href="property-single.html" class="link-a">Clique aqui para ver
+                      <span class="ion-ios-arrow-forward"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Área</h4>
+                        <span>340m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Banheiros</h4>
+                        <span>2</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Quartos</h4>
+                        <span>4</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Garagem</h4>
+                        <span>1</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item-b">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{% static 'assets/img/property-10.jpg' %}" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="property-single.html">204 Montal
+                        <br /> South Bela Two</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">Preço | R$: 12.000</span>
+                    </div>
+                    <a href="property-single.html" class="link-a">Clique aqui para ver
+                      <span class="ion-ios-arrow-forward"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Área</h4>
+                        <span>340m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Banheiros</h4>
+                        <span>2</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Quartos</h4>
+                        <span>4</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Garagem</h4>
+                        <span>1</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Latest Properties Section -->
+
+    <!-- ======= Agents Section ======= -->
+    <section class="section-agents section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Nossos Corretores</h2>
+              </div>
+              <div class="title-link">
+                <a href="agents-grid.html">Todos Corretores
+                  <span class="ion-ios-arrow-forward"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card-box-d">
+              <div class="card-img-d">
+                <img src="{% static 'assets/img/agent-4.jpg' %}" alt="" class="img-d img-fluid">
+              </div>
+              <div class="card-overlay card-overlay-hover">
+                <div class="card-header-d">
+                  <div class="card-title-d align-self-center">
+                    <h3 class="title-d">
+                      <a href="agent-single.html" class="link-two">Margaret Sotillo
+                        <br> Escala</a>
+                    </h3>
+                  </div>
+                </div>
+                <div class="card-body-d">
+                  <p class="content-d color-text-a">
+                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                  </p>
+                  <div class="info-agents color-a">
+                    <p>
+                      <strong>Telefone: </strong> +54 356 945234</p>
+                    <p>
+                      <strong>Email: </strong> agents@example.com</p>
+                  </div>
+                </div>
+                <div class="card-footer-d">
+                  <div class="socials-footer d-flex justify-content-center">
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-dribbble" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-box-d">
+              <div class="card-img-d">
+                <img src="{% static 'assets/img/agent-1.jpg' %}" alt="" class="img-d img-fluid">
+              </div>
+              <div class="card-overlay card-overlay-hover">
+                <div class="card-header-d">
+                  <div class="card-title-d align-self-center">
+                    <h3 class="title-d">
+                      <a href="agent-single.html" class="link-two">Stiven Spilver
+                        <br> Darw</a>
+                    </h3>
+                  </div>
+                </div>
+                <div class="card-body-d">
+                  <p class="content-d color-text-a">
+                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                  </p>
+                  <div class="info-agents color-a">
+                    <p>
+                      <strong>Telefone: </strong> +54 356 945234</p>
+                    <p>
+                      <strong>Email: </strong> agents@example.com</p>
+                  </div>
+                </div>
+                <div class="card-footer-d">
+                  <div class="socials-footer d-flex justify-content-center">
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-dribbble" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-box-d">
+              <div class="card-img-d">
+                <img src="{% static 'assets/img/agent-5.jpg' %}" alt="" class="img-d img-fluid">
+              </div>
+              <div class="card-overlay card-overlay-hover">
+                <div class="card-header-d">
+                  <div class="card-title-d align-self-center">
+                    <h3 class="title-d">
+                      <a href="agent-single.html" class="link-two">Emma Toledo
+                        <br> Cascada</a>
+                    </h3>
+                  </div>
+                </div>
+                <div class="card-body-d">
+                  <p class="content-d color-text-a">
+                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                  </p>
+                  <div class="info-agents color-a">
+                    <p>
+                      <strong>Telefone: </strong> +54 356 945234</p>
+                    <p>
+                      <strong>Email: </strong> agents@example.com</p>
+                  </div>
+                </div>
+                <div class="card-footer-d">
+                  <div class="socials-footer d-flex justify-content-center">
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="fa fa-dribbble" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Agents Section -->
+
+    <!--/ Videos Clientes /-->
+  <section class="section-testimonials section-t8 nav-arrow-a">
+    <div class="container">
+      <div class="row">
+        
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h2 class="title-a">Aqui os clientes se tornam amigos!</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <center>
+          <iframe width="420" height="315"
+            src="https://www.youtube.com/embed/NV2kLLh88eA">
+          </iframe> 
+          
+          <iframe width="420" height="315"
+            src="https://www.youtube.com/embed/J-Ox7WK_p2M">
+          </iframe> 
+
+          <iframe width="420" height="315"
+            src="https://www.youtube.com/embed/ZMSk3AxEeJU">
+          </iframe> 
+
+          <iframe width="420" height="315"
+            src="https://www.youtube.com/embed/kGNr-OvucTY">
+          </iframe> 
+          
+          <iframe width="420" height="315"
+            src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1">
+          </iframe>          
+      </center>  
+      </div>      
+    </div>
+  </section>    
+  <!--/ Videos Clientes Fim /-->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section class="section-testimonials section-t8 nav-arrow-a">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Na Rede</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="testimonial-carousel" class="owl-carousel owl-arrow">
+          <div class="carousel-item-a">
+            <div class="testimonials-box">
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="testimonial-img">
+                    <img src="{% static 'assets/img/testimonial-1.jpg' %}" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <div class="testimonial-ico">
+                    <span class="ion-ios-quote"></span>
+                  </div>
+                  <div class="testimonials-content">
+                    <p class="testimonial-text">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
+                      debitis hic ber quibusdam
+                      voluptatibus officia expedita corpori.
+                    </p>
+                  </div>
+                  <div class="testimonial-author-box">
+                    <img src="{% static 'assets/img/mini-testimonial-1.jpg' %}" alt="" class="testimonial-avatar">
+                    <h5 class="testimonial-author">Albert & Erika</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item-a">
+            <div class="testimonials-box">
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="testimonial-img">
+                    <img src="{% static 'assets/img/testimonial-2.jpg' %}" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <div class="testimonial-ico">
+                    <span class="ion-ios-quote"></span>
+                  </div>
+                  <div class="testimonials-content">
+                    <p class="testimonial-text">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
+                      debitis hic ber quibusdam
+                      voluptatibus officia expedita corpori.
+                    </p>
+                  </div>
+                  <div class="testimonial-author-box">
+                    <img src="{% static 'assets/img/mini-testimonial-2.jpg' %}" alt="" class="testimonial-avatar">
+                    <h5 class="testimonial-author">Pablo & Emma</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Testimonials Section -->
+
+  </main><!-- End #main -->
+
+  <!--/ footer Star /-->
+  <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <a class="navbar-brand text-brand" href="index.html">Ronaldo<span class="color-b">Santos</span></a>              
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+               Ser Corretor é,
+               <br>
+                <b>"Ter a competência de encontrar a pessoa certa para aquele imóvel e o imóvel certo para aquela pessoa."</b>
+                <br>
+                                     Dásio Scopel
+              </p>
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Telefone .</span>+55 83 99602 4822</li>
+                <li class="color-a">
+                  <span class="color-text-a">Email </span>imoveis.ronaldosantos@gmail.com</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">A Empresa</h3>
+            </div>
+            <div class="w-body-a">
+              <div class="w-body-a">
+                <ul class="list-unstyled">
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i> <a href="#">Site Map</a>
+                  </li>
+                                   
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">Onde Estamos</h3>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">João Pessoa-PB</a>
+                </li>
+               
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      <a href="https://wa.me/5583996024822?text=Olá,%20estou%20interessado%20em%20um%20imóvel,%20preciso%20da%20sua%20ajuda!" style="position:fixed;width:60px;height:60px;bottom:40px;right:60px;background-color:#05E676;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+              z-index:1000;" target="_blank">
+        <i style="margin-top:16px" class="fa fa-whatsapp"></i>
+      </a>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">Home</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Equipe</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Imóveis</a>
+              </li>              
+              <li class="list-inline-item">
+                <a href="#">Contatos</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://www.youtube.com/channel/UCTEICunBg5PUPpeS26eLzXw?sub_confirmation=1" target="_blank">
+                  <i class="fa fa-youtube" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://www.instagram.com/corretordeimoveisemjoaopessoa/" target="_blank">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              </li>             
+            </ul>
+          </div>
+          <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">RonaldoSantosImóveis</span> All Rights Reserved.
+            </p>
+          </div>
+          <div class="">            
+            Designed by <a href="https://gorillastech.com.br/">GorillasTech</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/scrollreveal/scrollreveal.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+

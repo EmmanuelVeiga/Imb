@@ -1,0 +1,77 @@
+{% extends 'painel.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% block imoveis %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Lista de Imóveis</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <style>
+  .botoes-items {
+    display: inline-block;
+    margin-left: 900px;
+  }
+  </style>
+  <div class="container">
+    <div align="center">
+      <h2 id="cad">Lista de Imóveis</h2>
+    </div>
+    <div class="botoes-items">
+      <div class="botoes">
+        <a href="{% url 'imovel:imovel_create' %}" class="btn btn-md btn-success">Cadastrar Imóvel</a>
+        <a href="/" class="btn btn-primary" role="button">Voltar</a>
+      </div>
+    </div>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">IMÓVEL</th>
+          <th scope="col">CATEGORIA</th>
+          <th scope="col">NEGOCIO</th>
+          <th scope="col">STATUS</th>
+          <th scope="col">ENDEREÇO</th>
+          <th scope="col">CORRETOR</th>
+          <th scope="col">PROPRIEDADE</th>
+          <th scope="col">IMAGEM</th>
+          <th scope="col">LOCALIZAÇÃO</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for imovel in imoveis %}
+        <tr>
+          <th scope="row">{{ imovel.id }}</th>
+          <td>{{ imovel.titulo }}</td>
+          <td>{{ imovel.categoria }}</td>
+          <td>{{ imovel.negocio }}</td>
+          <td>{{ imovel.status }}</td>
+          <td>{{ imovel.endereco }}</td>
+          <td>{{ imovel.corretor }}</td>
+          <td>{{ imovel.propriedade }}</td>
+          <td>
+            {% if imovel.first_image %}
+              <img src="{{ imovel.first_image.imagem.url }}" alt="" width="100px">
+            {% else %}
+              Falta
+            {% endif %}
+          </td>
+          <td>{{ imovel.localizacao }}</td>
+          <td>
+            <a href="{% url 'imovel:imovel_detail' imovel.id %}"><i class="fa fa-search" aria-hidden="true">Visualizar</i></a>
+            <a href="{% url 'imovel:imovel_update' imovel.id %}"><i class="fa fa-pencil">Editar</i></a>
+            <a href="{% url 'imovel:imovel_delete' imovel.id %}"><i class="fa fa-trash" aria-hidden="true"></i>Deletar</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endblock %}

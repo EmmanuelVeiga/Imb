@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% load bootstrap %}
+{% block content %}
+
+<style>
+    .t{
+        text-align: center;
+    }
+    input, textarea {
+    text-transform: uppercase;
+}
+</style>
+    <div class="container">
+        <div class="t">
+            <h1>Editar Nº{{imovel.id}} |  {{imovel.titulo}}</h1>
+        </div>
+        <div>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+            {{form.titulo | bootstrap}}
+            {{form.propriedade | bootstrap}}
+            {{form.negocio | bootstrap}}
+            {{form.categoria | bootstrap}}
+            <label for="imagem">Imagens:</label> <input type="file" name="imagem" multiple="">            
+                     
+            {{form.localizacao | bootstrap}}
+            {{form.endereco | bootstrap}}
+            {{form.area | bootstrap}}
+            {{form.num_quarto | bootstrap}}
+            {{form.num_banheiro | bootstrap}}
+            {{form.num_vaga | bootstrap}}
+            {{form.descricao | bootstrap}}
+            {{form.corretor | bootstrap}}
+            {{form.status | bootstrap}} 
+
+            <br>               
+        		<input type="button" value="Voltar" style="margin-left: 1090px;" class="btn btn-info" onClick="history.go(-1)">  <input type="submit" class="btn btn-success" value="Atualizar">
+            </form>
+            
+        </div>
+    </div>
+{% endblock %}
