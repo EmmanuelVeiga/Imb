@@ -20,7 +20,7 @@ class UsuarioCreateView(CreateView):
 
     def get_success_url(self):
         messages.success(self.request, 'Usuário cadastrado com sucesso na plataforma!')
-        return reverse(self.success_url)
+        #return reverse(self.success_url)
 
 
 class UsuarioUpdateView(UpdateView):

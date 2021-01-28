@@ -28,11 +28,8 @@
 </head>
 
 <body>
-  <section id="container">
-    <!-- **********************************************************************************************************************************************************
-        TOP BAR CONTENT & NOTIFICATIONS
-        *********************************************************************************************************************************************************** -->
-    <!--header start-->
+  <section id="container">    
+    <!--header-->
     <header class="header black-bg">
       <div class="sidebar-toggle-box">
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
@@ -54,16 +51,14 @@
         </ul>
       </div>
     </header>
-    <!--header end-->
-    <!-- **********************************************************************************************************************************************************
-        MAIN SIDEBAR MENU
-        *********************************************************************************************************************************************************** -->
-    <!--sidebar start-->
+    <!--header-->
+    
+    <!--sidebar-->
     <aside>
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href=""><img src="static/images/logoRS.jpg" class="rounded" width="150"></a></p>
+          <p class="centered"><a href=""><img src="{% static 'images/logoRS.jpg' %}" class="rounded" width="150"></a></p>
           <h5 class="centered">Ronaldo Santos </h5>
           <li class="mt">
             <a href="">
@@ -108,14 +103,12 @@
             
           </li>
         </ul>
-        <!-- sidebar menu end-->
+        <!-- sidebar menu-->
       </div>
     </aside>
-    <!--sidebar end-->
-    <!-- **********************************************************************************************************************************************************
-        MAIN CONTENT
-        *********************************************************************************************************************************************************** -->
-    <!--main content start-->
+    <!--sidebar-->
+    
+    <!--main content-->
     <section id="main-content">
       <section class="wrapper">
         <!-- page start-->
@@ -198,22 +191,16 @@
 
       <!-- /wrapper -->
     </section>
-    {% endblock %}
-    <!-- /MAIN CONTENT -->
-    <!--main content end-->
-    <!--footer start-->
+    {% endblock %}    
+    <!--main content-->
+    <!--footer-->
     <footer class="site-footer">
       <div class="text-center">
         <p>
           &copy; Copyrights <strong>Ronaldo Santos Imóveis</strong>. Todos os direitos reservados
         </p>
         <div class="credits">
-          <!--
-            You are NOT allowed to delete the credit link to TemplateMag with free version.
-            You can delete the credit link only if you bought the pro version.
-            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
-            Licensing information: https://templatemag.com/license/
-          -->
+          
           Criado por  <a href="#">Gorillas Tech</a>
         </div>
         <a href="inbox.html#" class="go-top">

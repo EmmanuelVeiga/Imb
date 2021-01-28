@@ -4,110 +4,131 @@
 {% block content %}
 
 <!DOCTYPE html>
+
+<style>
+  .panel-default > .panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+</style>
 <html lang="pt-br">
-<head>
- <meta charset="utf-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>Imóvel Nº{{imovel.id}}</title>
-
- <link href="css/bootstrap.min.css" rel="stylesheet">
- <link href="css/style.css" rel="stylesheet">
-</head>
-<body>
- <h1 style="text-align: center;">Dados do Imóvel</h1>
- <div id="main" class="container-fluid">
-  <h3 class="page-header" enctype="multipart/form-data">Visualizar Imóvel Nº{{imovel.id}}</h3>
-
- 
-  <div class="row">
-    <div class="col-md-4">
-      <p><strong>Nome:</strong></p>
-      <p>{{imovel.titulo}}</p>
-    </div>
-  
-  <div class="col-md-4">
-      <p><strong>Propriedade</strong></p>
-      <p>{{imovel.propriedade}}</p>
-    </div>
-  
-  <div class="col-md-4">
-      <p><strong>Negócio</strong></p>
-      <p>{{imovel.negocio}}</p>
-    </div>
-
-    <div class="col-md-4">
-      <p><strong>Categoria</strong></p>
-      <p>{{imovel.categoria}}</p>
-    </div>
-  
-  <div class="col-md-4">
-      <p><strong>Localização</strong></p>
-      <p>{{imovel.localizacao}}</p>
-    </div>
-  
-  <div class="col-md-4">
-      <p><strong>Endereço</strong></p>
-      <p>{{imovel.endereco}}</p>
-    </div>
-  
-    <div class="col-md-4">
-      <p><strong>Área</strong></p>
-      <p>{{imovel.area}}</p>
-    </div>
-  
-  <div class="col-md-4">
-      <p><strong>Quarto(s)</strong></p>
-      <p>{{imovel.num_quarto}}</p>
-    </div>
-  
-  <div class="col-md-4">
-      <p><strong>Banheiro(s)</strong></p>
-      <p>{{imovel.num_banheiro}}</p>
-    </div>
-
-  <div class="col-md-4">
-      <p><strong>Vaga(s)</strong></p>
-      <p>{{imovel.num_vaga}}</p>
-    </div>
-  <div class="col-md-4">
-      <p><strong>Disponibilidade</strong></p>
-      <p>{{imovel.status}}</p>
-    </div>
- 
-  <div class="col-md-4">
-      <p><strong>Corretor(a)</strong></p>
-      <p>{{imovel.corretor}}</p>
-    </div>
-
-    <div class="col-md-8">
-      <p><strong>Descrição</strong></p>
-      <p> {{imovel.descricao}}</p>
-    </div>
-
-
-  <div class="holder">
-      <p><strong>Imagens</strong></p>
-      {% for item in imovel.imagem_imoveis.all %}
-        <!-- {{ iterador.campo }} -->
-        {% if item.imagem %}
-          <img src="{{ item.imagem.url }}" width="180">
-        {% endif %}
-      {% endfor %} 
+      <div id="page-wrapper">
+        <div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Visualizando Imóvel</h1>
   </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-8 col-xs-4" style="height: 30px; display: flex;">
+            <p style="vertical-align: middle; margin: auto 0;">
+            Dados do Imóvel                          
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="col-lg-12">
+          <br>
+          <h2>Imóvel Nº{{imovel.id}}</h2>
+          <div class="row">
+            <div class="col-sm-4">
+              <h4 class="fields-category-header"></h4>
+              <br>
+              <p>
+                <b>Nome:</b>
+                {{imovel.titulo}}
+              </p>
+              <p>
+                  <b>Corretor(a):</b>
+                  {{imovel.corretor}}
+                </p>
+              <p>
+                <b>Disponibilidade:</b>
+                {{imovel.status}}
+              </p>
+            </div>
+            <div class="col-sm-4">
+              <h4 class="fields-category-header">Detalhes</h4>
+              <br>
+              <p>
+                <b>Propriedade:</b>
+                {{imovel.propriedade}}
+              </p>
+              <p>
+                <b>Negócio:</b>
+                {{imovel.negocio}}
+              </p>
+              <p>
+                 <b>Categoria:</b>
+                 {{imovel.categoria}}
+               </p>
+               <p>
+                <b>Área:</b>
+                {{imovel.area}}
+              </p>
+              <p>
+                <b>Quarto(s):</b>
+                {{imovel.num_quarto}}
+              </p>
+              <p>
+                 <b>Banheiro(s):</b>
+                 {{imovel.num_banheiro}}
+               </p>
+               <p>
+                 <b>Vaga(s):</b>
+                 {{imovel.num_vaga}}
+               </p>
 
-  <div id="actions" class="row">
-   <div class="col-md-12">
-    <input type="button" value="Voltar" style="margin-left: 1100px;" class="btn btn-info" onClick="history.go(-1)">  <input type="submit" class="btn btn-success" value="Salvar">  
-   </div>
-  </div>
- 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            </div>
+            <div class="col-sm-4">
+              <h4 class="fields-category-header">Localização Aprox</h4>
+              <br>
+              <p>
+                <b>Endereço:</b>
+                {{imovel.endereco}}
+              </p>
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+              <p>
+                <b>Bairro:</b>
+                {{imovel.localizacao}}
+              </p>
+
+              <p>
+                <b>Descrição:</b>
+                {{imovel.descricao}}
+              </p>              
+            </div>            
+          </div>
+          <div class="holder">
+              <br>
+                <h4>Imagens</h4>
+                {% for item in imovel.imagem_imoveis.all %}
+                  <!-- {{ iterador.campo }} -->
+                  {% if item.imagem %}
+                    <img src="{{ item.imagem.url }}" width="180">
+                  {% endif %}
+                {% endfor %} 
+            </div>
+            <br>
+          <div class="actions col-lg-12"  style="margin-left: 1250px;">
+            <input type="button" value="Voltar" class="btn btn-info" onClick="history.go(-1)">
+            <a href="{% url 'imovel:imovel_update' imovel.id %}"><i class="btn btn-warning">Editar</i></a>          
+          </div>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>
-
+  
 {% endblock %}
 

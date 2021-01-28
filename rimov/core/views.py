@@ -6,6 +6,11 @@ def index(request):
     return render(request, template_name)
 
 
+def painel(request):
+    template_name = 'painel.html'
+    return render(request, template_name)
+
+
 def team(request):
     template_name = 'team.html'
     return render(request, template_name)

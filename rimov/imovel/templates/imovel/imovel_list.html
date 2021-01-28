@@ -1,10 +1,49 @@
 {% extends 'painel.html' %}
 {% load static %}
-{% load bootstrap3 %}
+{% load bootstrap %}
 {% block imoveis %}
 <!DOCTYPE html>
 <html>
 
+<style>
+  a.actions.view, button.actions.view {
+    border: 1px solid #2fa4e7;
+    color: #2fa4e7;
+}
+  a.actions, button.actions {
+    display: inline-block;
+    border-radius: 3px;
+    padding: 5px 8px;
+    margin: 0 10px;
+}
+
+a.actions.edit, button.actions.edit {
+    border: 1px solid #dd5600;
+    color: #dd5600;
+}
+a.actions, button.actions {
+    display: inline-block;
+    border-radius: 3px;
+    padding: 5px 8px;
+    margin: 0 10px;
+}
+
+a.actions.delete, button.actions.delete {
+    border: 1px solid #c71c22;
+    color: #c71c22;
+}
+a.actions, button.actions {
+    display: inline-block;
+    border-radius: 3px;
+    padding: 5px 8px;
+    margin: 0 10px;
+}
+
+.actions {
+  display: flex;
+
+}
+</style>
 <head>
   <title>Lista de Imóveis</title>
   <meta charset="utf-8">
@@ -30,48 +69,65 @@
         <a href="{% url 'imovel:imovel_create' %}" class="btn btn-md btn-success">Cadastrar Imóvel</a>
         <a href="/" class="btn btn-primary" role="button">Voltar</a>
       </div>
+      <br>
     </div>
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">IMÓVEL</th>
-          <th scope="col">CATEGORIA</th>
-          <th scope="col">NEGOCIO</th>
-          <th scope="col">STATUS</th>
-          <th scope="col">ENDEREÇO</th>
-          <th scope="col">CORRETOR</th>
-          <th scope="col">PROPRIEDADE</th>
-          <th scope="col">IMAGEM</th>
-          <th scope="col">LOCALIZAÇÃO</th>
-        </tr>
-      </thead>
-      <tbody>
+     <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <table id="dataTables-service-order" class="table table-striped table-bordered table-hover" data-url="">
+            <!-- <table class="table table-striped table-bordered table-hover" id="dataTables-service-order"> -->
+              <thead>
+                <tr role="row">
+                  <th>ID</th>
+                  <th>NOME</th>
+                  <th>NEGÓCIO</th>
+                  <th>CATEGORIA</th>
+                  <th>PROPRIEDADE</th>
+                  <th>STATUS</th>
+                  <th>CORRETOR</th>
+                  <th>LOCALIZAÇÃO</th>
+                  <th>IMAGEM</th>                  
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
         {% for imovel in imoveis %}
         <tr>
           <th scope="row">{{ imovel.id }}</th>
           <td>{{ imovel.titulo }}</td>
-          <td>{{ imovel.categoria }}</td>
           <td>{{ imovel.negocio }}</td>
-          <td>{{ imovel.status }}</td>
-          <td>{{ imovel.endereco }}</td>
-          <td>{{ imovel.corretor }}</td>
-          <td>{{ imovel.propriedade }}</td>
+          <td>{{ imovel.categoria }}</td>
+          <td>{{ imovel.propriedade }}</td>          
+          <td>{{ imovel.status }}</td>          
+          <td>{{ imovel.corretor }}</td>          
+          <td>{{ imovel.localizacao }}</td>            
           <td>
             {% if imovel.first_image %}
-              <img src="{{ imovel.first_image.imagem.url }}" alt="" width="100px">
+              <img src="{{ imovel.first_image.imagem.url }}" alt="" width="50px">
             {% else %}
               Falta
             {% endif %}
           </td>
-          <td>{{ imovel.localizacao }}</td>
+                  
           <td>
-            <a href="{% url 'imovel:imovel_detail' imovel.id %}"><i class="fa fa-search" aria-hidden="true">Visualizar</i></a>
-            <a href="{% url 'imovel:imovel_update' imovel.id %}"><i class="fa fa-pencil">Editar</i></a>
-            <a href="{% url 'imovel:imovel_delete' imovel.id %}"><i class="fa fa-trash" aria-hidden="true"></i>Deletar</a>
+            <div class="actions">
+            <a class="actions view" href="{% url 'imovel:imovel_detail' imovel.id %}"><i class="fa fa-search-plus"></i></a>
+            <a class="actions edit" href="{% url 'imovel:imovel_update' imovel.id %}"><i class="fa fa-edit"></i></a>
+            <a class="actions delete" data-confirm="Você tem certeza que deseja excluir esse registo?" rel="nofollow" data-method="delete" href="{% url 'imovel:imovel_delete' imovel.id %}"><i class="fa fa-trash-o"></i></a>
+            </div>
           </td>
         </tr>
         {% endfor %}
-      </tbody>
+      </tbody>           
+            </table>          
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
     </table>
     {% endblock %}
