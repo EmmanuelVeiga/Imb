@@ -1,9 +1,13 @@
 from django.shortcuts import render
+from rimov.imovel.models import Imovel
+from rimov.usuario.models import Usuario
 
 
 def index(request):
     template_name = 'index.html'
-    return render(request, template_name)
+    imoveis = Imovel.objects.all()
+    context = {'imoveis': imoveis}
+    return render(request, template_name, context)
 
 
 def painel(request):
@@ -13,12 +17,16 @@ def painel(request):
 
 def team(request):
     template_name = 'team.html'
-    return render(request, template_name)
+    usuarios = Usuario.objects.all()
+    context = {'usuarios': usuarios}
+    return render(request, template_name, context)
 
 
 def pgrid(request):
     template_name = 'property-grid.html'
-    return render(request, template_name)
+    imoveis = Imovel.objects.all()
+    context = {'imoveis': imoveis}
+    return render(request, template_name, context)
 
 
 def contact(request):

@@ -1,0 +1,8 @@
+from usuario.models import Usuario
+u = Usuario()
+u.nome = 'Admin'
+u.tipo = 'ADMINISTRADOR'
+u.email = 'admin@email.com'
+u.is_active = True
+u.save()
+u.set_password('123456')

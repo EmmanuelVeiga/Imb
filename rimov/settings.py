@@ -114,9 +114,9 @@ USE_TZ = True
 #Login#
 
 
-LOGIN_REDIRECT_URL = 'painel/'
+LOGIN_REDIRECT_URL = '/painel'
 
-LOGOUT_REDIRECT_URL = 'login/'
+LOGOUT_REDIRECT_URL = '/'
 
 MEDIA_URL = 'core/media/'
 
@@ -130,7 +130,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "core/static"),
 ]
-
-LOGIN_REDIRECT_URL = '/'
-
-LOGOUT_REDIRECT_URL = '/users/login'

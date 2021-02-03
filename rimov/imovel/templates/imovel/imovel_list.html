@@ -4,62 +4,25 @@
 {% block imoveis %}
 <!DOCTYPE html>
 <html>
-
-<style>
-  a.actions.view, button.actions.view {
-    border: 1px solid #2fa4e7;
-    color: #2fa4e7;
-}
-  a.actions, button.actions {
-    display: inline-block;
-    border-radius: 3px;
-    padding: 5px 8px;
-    margin: 0 10px;
-}
-
-a.actions.edit, button.actions.edit {
-    border: 1px solid #dd5600;
-    color: #dd5600;
-}
-a.actions, button.actions {
-    display: inline-block;
-    border-radius: 3px;
-    padding: 5px 8px;
-    margin: 0 10px;
-}
-
-a.actions.delete, button.actions.delete {
-    border: 1px solid #c71c22;
-    color: #c71c22;
-}
-a.actions, button.actions {
-    display: inline-block;
-    border-radius: 3px;
-    padding: 5px 8px;
-    margin: 0 10px;
-}
-
-.actions {
-  display: flex;
-
-}
-</style>
 <head>
   <title>Lista de Imóveis</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-
 <body>
-  <style>
+<style>
   .botoes-items {
     display: inline-block;
     margin-left: 900px;
   }
-  </style>
+</style>
+  
+
   <div class="container">
     <div align="center">
       <h2 id="cad">Lista de Imóveis</h2>
@@ -67,7 +30,7 @@ a.actions, button.actions {
     <div class="botoes-items">
       <div class="botoes">
         <a href="{% url 'imovel:imovel_create' %}" class="btn btn-md btn-success">Cadastrar Imóvel</a>
-        <a href="/" class="btn btn-primary" role="button">Voltar</a>
+        <a href="/painel" class="btn btn-danger" role="button">Voltar</a>
       </div>
       <br>
     </div>
@@ -87,7 +50,7 @@ a.actions, button.actions {
                   <th>CORRETOR</th>
                   <th>LOCALIZAÇÃO</th>
                   <th>IMAGEM</th>                  
-                  <th>Ações</th>
+                  <th>AÇÃO</th>
                 </tr>
               </thead>
               <tbody>
@@ -99,7 +62,7 @@ a.actions, button.actions {
           <td>{{ imovel.categoria }}</td>
           <td>{{ imovel.propriedade }}</td>          
           <td>{{ imovel.status }}</td>          
-          <td>{{ imovel.corretor }}</td>          
+          <td>{{ imovel.corretor.nome }}</td>          
           <td>{{ imovel.localizacao }}</td>            
           <td>
             {% if imovel.first_image %}
@@ -107,14 +70,13 @@ a.actions, button.actions {
             {% else %}
               Falta
             {% endif %}
-          </td>
-                  
+          </td>                  
           <td>
-            <div class="actions">
-            <a class="actions view" href="{% url 'imovel:imovel_detail' imovel.id %}"><i class="fa fa-search-plus"></i></a>
-            <a class="actions edit" href="{% url 'imovel:imovel_update' imovel.id %}"><i class="fa fa-edit"></i></a>
-            <a class="actions delete" data-confirm="Você tem certeza que deseja excluir esse registo?" rel="nofollow" data-method="delete" href="{% url 'imovel:imovel_delete' imovel.id %}"><i class="fa fa-trash-o"></i></a>
-            </div>
+            <div class="botoes list">
+              <a href="{% url 'imovel:imovel_detail' imovel.id %}" class="btn btn-success"><i class="fa fa-eye"></i></a>
+              <a href="{% url 'imovel:imovel_update' imovel.id %}" class="btn btn-primary"><i class="icon-pencil"></i></a>
+              <a href="{% url 'imovel:imovel_delete' imovel.id %}" class="btn btn-danger"><i class="icon-trash"></i></a>
+            </div>           
           </td>
         </tr>
         {% endfor %}
@@ -123,11 +85,6 @@ a.actions, button.actions {
           </div>
         </div>
       </div>
-
-
-
-
-
-
+      </body>
     </table>
     {% endblock %}

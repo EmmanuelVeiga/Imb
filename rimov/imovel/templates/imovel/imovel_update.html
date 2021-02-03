@@ -13,7 +13,7 @@
 </style>
     <div class="container">
         <div class="t">
-            <h1>Editar Nº{{imovel.id}} |  {{imovel.titulo}}</h1>
+            <h1>Editar Imóvel Nº: {{imovel.id}}</h1>
         </div>
         <div>
             <form action="" method="POST" enctype="multipart/form-data">
@@ -22,8 +22,7 @@
             {{form.propriedade | bootstrap}}
             {{form.negocio | bootstrap}}
             {{form.categoria | bootstrap}}
-            <label for="imagem">Imagens:</label> <input type="file" name="imagem" multiple="">            
-                     
+            <label for="imagem">Imagens:</label> <input type="file" name="imagem" multiple="">
             {{form.localizacao | bootstrap}}
             {{form.endereco | bootstrap}}
             {{form.area | bootstrap}}
@@ -35,7 +34,7 @@
             {{form.status | bootstrap}} 
 
             <br>               
-        		<input type="button" value="Voltar" style="margin-left: 1090px;" class="btn btn-info" onClick="history.go(-1)">  <input type="submit" class="btn btn-success" value="Atualizar">
+        		<input type="button" value="Voltar" style="margin-left: 1090px;" class="btn btn-danger" onClick="history.go(-1)">  <input type="submit" class="btn btn-success" value="Atualizar">
             </form>
             
         </div>
