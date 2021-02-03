@@ -142,56 +142,58 @@
               </form>
             </div>
           </div>
-          <div class="col-md-4">
-            {% for imovel in imoveis %}
-            <div class="card-box-a card-shadow">
-              <div class="img-box-a">
-                <img src="{% static 'assets/img/property-3.jpg' %}" alt="" class="img-a img-fluid">
-              </div>
-              <div class="card-overlay">
-                <div class="card-overlay-a-content">
-                  <div class="card-header-a">
-                    <h2 class="card-title-a">
-                      <a href="#">204 Mount
-                        <br /> Olive Road Two</a>
-                    </h2>
+          {% for imovel in imoveis %}
+            {% if imovel.first_image %}
+              <div class="col-md-4">
+                <div class="card-box-a card-shadow">
+                  <div class="img-box-a">
+                    <img src="{{ imovel.first_image.imagem.url }}" alt="" class="img-a img-fluid">
                   </div>
-                  <div class="card-body-a">
-                    <div class="price-box d-flex">
-                      <span class="price-a">Preço | R$:  12.000</span>
+                  <div class="card-overlay">
+                    <div class="card-overlay-a-content">
+                      <div class="card-header-a">
+                        <h2 class="card-title-a">
+                          <a href="#">{{ imovel.titulo }}
+                            <br /> {{ imovel.localizacao }}</a>
+                        </h2>
+                      </div>
+                      <div class="card-body-a">
+                        <div class="price-box d-flex">
+                          <span class="price-a">Preço | R$:  12.000</span>
+                        </div>
+                        <a href="{% url 'core:psingle' imovel.id %}" class="link-a">Clique aqui para ver
+                          <span class="ion-ios-arrow-forward"></span>
+                        </a>
+                      </div>
+                      <div class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                          <li>
+                            <h4 class="card-info-title">Área</h4>
+                            <span>340m
+                              <sup>2</sup>
+                            </span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Banheiros</h4>
+                            <span>2</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Quartos</h4>
+                            <span>4</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Garagem</h4>
+                            <span>1</span>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                    <a href="{% url 'core:psingle' imovel.id %}" class="link-a">Clique aqui para ver
-                      <span class="ion-ios-arrow-forward"></span>
-                    </a>
-                  </div>
-                  <div class="card-footer-a">
-                    <ul class="card-info d-flex justify-content-around">
-                      <li>
-                        <h4 class="card-info-title">Área</h4>
-                        <span>340m
-                          <sup>2</sup>
-                        </span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Banheiros</h4>
-                        <span>2</span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Quartos</h4>
-                        <span>4</span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Garagem</h4>
-                        <span>1</span>
-                      </li>
-                      {% endfor %}
-                    </ul>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="col-md-4">
+            {% endif %}
+          {% endfor %}
+          <!-- <div class="col-md-4">
             <div class="card-box-a card-shadow">
               <div class="img-box-a">
                 <img src="{% static 'assets/img/property-3.jpg' %}" alt="" class="img-a img-fluid">
@@ -425,7 +427,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="row">
           <div class="col-sm-12">
