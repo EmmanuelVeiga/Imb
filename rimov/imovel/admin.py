@@ -1,9 +1,15 @@
 from django.contrib import admin
-from .models import Imovel
+from .models import Imovel, Galeria
+
+
+class GaleriaInline(admin.TabularInline):
+    model = Galeria
+    extra = 0
 
 
 @admin.register(Imovel)
 class ImovelAdmin(admin.ModelAdmin):
+    inlines = (GaleriaInline,)
     list_display = (
         'id',
         'titulo',

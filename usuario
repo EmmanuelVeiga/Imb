@@ -1,4 +1,4 @@
-from usuario.models import Usuario
+from rimov.usuario.models import Usuario
 u = Usuario()
 u.nome = 'Admin'
 u.tipo = 'ADMINISTRADOR'

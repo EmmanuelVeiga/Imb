@@ -104,33 +104,35 @@
 
   <div class="intro intro-carousel">
 
-    <div id="carousel" class="owl-carousel owl-theme">      
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'assets/img/slide-1.jpg' %})">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">             
-              <div class="row">
-                <div class="col-lg-8">
-                   {% for imovel in imoveis %}
-                  <div class="intro-body">
-                    <p class="intro-title-top">{{imovel.localizacao}}
-                      <br> 78345</p>
-                    <h1 class="intro-title mb-4">
-                      <span class="color-b">{{imovel.id}} </span> {{ imovel.titulo|truncatechars:25 }}
-                      <br> {{imovel.endereco|truncatechars:25}}</h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">Preço | R$: 12.000</span></a>
-                    </p>
+    <div id="carousel" class="owl-carousel owl-theme">
+      {% for imovel in imoveis %}
+        {% if imovel.first_image %}
+          <div class="carousel-item-a intro-item bg-image" style="background-image: url({{ imovel.first_image.imagem.url }})">
+            <div class="overlay overlay-a"></div>
+            <div class="intro-content display-table">
+              <div class="table-cell">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <div class="intro-body">
+                        <p class="intro-title-top">{{imovel.localizacao}}
+                          <br> 78345</p>
+                        <h1 class="intro-title mb-4">
+                          <span class="color-b">{{imovel.id}} </span> {{ imovel.titulo|truncatechars:25 }}
+                          <br> {{imovel.endereco|truncatechars:25}}</h1>
+                        <p class="intro-subtitle intro-price">
+                          <a href="#"><span class="price-a">Preço | R$: 12.000</span></a>
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                {% endfor %}
-                </div>                
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'assets/img/slide-2.jpg' %})">
+        {% endif %}
+      {% endfor %}
+      <!-- <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'assets/img/slide-2.jpg' %})">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -179,7 +181,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div><!-- End Intro Section -->
 
@@ -213,7 +215,7 @@
                   Encontramos os melhores imóveis para você. Tenha a segurança de ser atendido por uma equipe totalmente preparada.
                 </p>
               </div>
-              <div class="card-footer-c">                
+              <div class="card-footer-c">
               </div>
             </div>
           </div>
@@ -277,194 +279,198 @@
           </div>
         </div>
         <div id="property-carousel" class="owl-carousel owl-theme">
-          <div class="carousel-item-b">
-            <div class="card-box-a card-shadow">
-              <div class="img-box-a">
-                <img src="{% static 'img/property-6.jpg' %}" alt="" class="img-a img-fluid">
-              </div>
-              <div class="card-overlay">
-                <div class="card-overlay-a-content">
-                  <div class="card-header-a">
-                    <h2 class="card-title-a">
-                      <a href="property-single.html">206 Mount
-                        <br /> Olive Road Two</a>
-                    </h2>
-                  </div>
-                  <div class="card-body-a">
-                    <div class="price-box d-flex">
-                      <span class="price-a">Preço | R$: 12.000</span>
+          {% for imovel in imoveis %}
+            <div class="carousel-item-b">
+              <div class="card-box-a card-shadow">
+                <div class="img-box-a">
+                  {% if imovel.first_image %}
+                    <img class="img-a img-fluid" src="{{ imovel.first_image.imagem.url }}">
+                  {% endif %}
+                </div>
+                <div class="card-overlay">
+                  <div class="card-overlay-a-content">
+                    <div class="card-header-a">
+                      <h2 class="card-title-a">
+                        <a href="property-single.html">{{ imovel.titulo }}
+                          <br /> {{ imovel.localizacao }}</a>
+                      </h2>
                     </div>
-                    <a href="#" class="link-a">Clique aqui para ver
-                      <span class="ion-ios-arrow-forward"></span>
-                    </a>
-                  </div>
-                  <div class="card-footer-a">
-                    <ul class="card-info d-flex justify-content-around">
-                      <li>
-                        <h4 class="card-info-title">Área</h4>
-                        <span>340m
-                          <sup>2</sup>
-                        </span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Banheiros</h4>
-                        <span>2</span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Quartos</h4>
-                        <span>4</span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Garagem</h4>
-                        <span>1</span>
-                      </li>
-                    </ul>
+                    <div class="card-body-a">
+                      <div class="price-box d-flex">
+                        <span class="price-a">Preço | R$: 12.000</span>
+                      </div>
+                      <a href="#" class="link-a">Clique aqui para ver
+                        <span class="ion-ios-arrow-forward"></span>
+                      </a>
+                    </div>
+                    <div class="card-footer-a">
+                      <ul class="card-info d-flex justify-content-around">
+                        <li>
+                          <h4 class="card-info-title">Área</h4>
+                          <span>340m
+                            <sup>2</sup>
+                          </span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Banheiros</h4>
+                          <span>2</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Quartos</h4>
+                          <span>4</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Garagem</h4>
+                          <span>1</span>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="carousel-item-b">
-            <div class="card-box-a card-shadow">
-              <div class="img-box-a">
-                <img src="{% static 'img/property-3.jpg' %}" alt="" class="img-a img-fluid">
-              </div>
-              <div class="card-overlay">
-                <div class="card-overlay-a-content">
-                  <div class="card-header-a">
-                    <h2 class="card-title-a">
-                      <a href="property-single.html">157 West
-                        <br /> Central Park</a>
-                    </h2>
-                  </div>
-                  <div class="card-body-a">
-                    <div class="price-box d-flex">
-                      <span class="price-a">Preço | R$: 12.000</span>
+            <!-- <div class="carousel-item-b">
+              <div class="card-box-a card-shadow">
+                <div class="img-box-a">
+                  <img src="{% static 'img/property-3.jpg' %}" alt="" class="img-a img-fluid">
+                </div>
+                <div class="card-overlay">
+                  <div class="card-overlay-a-content">
+                    <div class="card-header-a">
+                      <h2 class="card-title-a">
+                        <a href="property-single.html">157 West
+                          <br /> Central Park</a>
+                      </h2>
                     </div>
-                    <a href="property-single.html" class="link-a">Clique aqui para ver
-                      <span class="ion-ios-arrow-forward"></span>
-                    </a>
-                  </div>
-                  <div class="card-footer-a">
-                    <ul class="card-info d-flex justify-content-around">
-                      <li>
-                        <h4 class="card-info-title">Área</h4>
-                        <span>340m
-                          <sup>2</sup>
-                        </span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Banheiros</h4>
-                        <span>2</span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Quartos</h4>
-                        <span>4</span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Garagem</h4>
-                        <span>1</span>
-                      </li>
-                    </ul>
+                    <div class="card-body-a">
+                      <div class="price-box d-flex">
+                        <span class="price-a">Preço | R$: 12.000</span>
+                      </div>
+                      <a href="property-single.html" class="link-a">Clique aqui para ver
+                        <span class="ion-ios-arrow-forward"></span>
+                      </a>
+                    </div>
+                    <div class="card-footer-a">
+                      <ul class="card-info d-flex justify-content-around">
+                        <li>
+                          <h4 class="card-info-title">Área</h4>
+                          <span>340m
+                            <sup>2</sup>
+                          </span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Banheiros</h4>
+                          <span>2</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Quartos</h4>
+                          <span>4</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Garagem</h4>
+                          <span>1</span>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="carousel-item-b">
-            <div class="card-box-a card-shadow">
-              <div class="img-box-a">
-                <img src="{% static 'img/property-7.jpg' %}" alt="" class="img-a img-fluid">
-              </div>
-              <div class="card-overlay">
-                <div class="card-overlay-a-content">
-                  <div class="card-header-a">
-                    <h2 class="card-title-a">
-                      <a href="property-single.html">245 Azabu
-                        <br /> Nishi Park let</a>
-                    </h2>
-                  </div>
-                  <div class="card-body-a">
-                    <div class="price-box d-flex">
-                      <span class="price-a">Preço | R$: 12.000</span>
+            <div class="carousel-item-b">
+              <div class="card-box-a card-shadow">
+                <div class="img-box-a">
+                  <img src="{% static 'img/property-7.jpg' %}" alt="" class="img-a img-fluid">
+                </div>
+                <div class="card-overlay">
+                  <div class="card-overlay-a-content">
+                    <div class="card-header-a">
+                      <h2 class="card-title-a">
+                        <a href="property-single.html">245 Azabu
+                          <br /> Nishi Park let</a>
+                      </h2>
                     </div>
-                    <a href="property-single.html" class="link-a">Clique aqui para ver
-                      <span class="ion-ios-arrow-forward"></span>
-                    </a>
-                  </div>
-                  <div class="card-footer-a">
-                    <ul class="card-info d-flex justify-content-around">
-                      <li>
-                        <h4 class="card-info-title">Área</h4>
-                        <span>340m
-                          <sup>2</sup>
-                        </span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Banheiros</h4>
-                        <span>2</span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Quartos</h4>
-                        <span>4</span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Garagem</h4>
-                        <span>1</span>
-                      </li>
-                    </ul>
+                    <div class="card-body-a">
+                      <div class="price-box d-flex">
+                        <span class="price-a">Preço | R$: 12.000</span>
+                      </div>
+                      <a href="property-single.html" class="link-a">Clique aqui para ver
+                        <span class="ion-ios-arrow-forward"></span>
+                      </a>
+                    </div>
+                    <div class="card-footer-a">
+                      <ul class="card-info d-flex justify-content-around">
+                        <li>
+                          <h4 class="card-info-title">Área</h4>
+                          <span>340m
+                            <sup>2</sup>
+                          </span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Banheiros</h4>
+                          <span>2</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Quartos</h4>
+                          <span>4</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Garagem</h4>
+                          <span>1</span>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="carousel-item-b">
-            <div class="card-box-a card-shadow">
-              <div class="img-box-a">
-                <img src="{% static 'img/property-10.jpg' %}" alt="" class="img-a img-fluid">
-              </div>
-              <div class="card-overlay">
-                <div class="card-overlay-a-content">
-                  <div class="card-header-a">
-                    <h2 class="card-title-a">
-                      <a href="property-single.html">204 Montal
-                        <br /> South Bela Two</a>
-                    </h2>
-                  </div>
-                  <div class="card-body-a">
-                    <div class="price-box d-flex">
-                      <span class="price-a">Preço | R$: 12.000</span>
+            <div class="carousel-item-b">
+              <div class="card-box-a card-shadow">
+                <div class="img-box-a">
+                  <img src="{% static 'img/property-10.jpg' %}" alt="" class="img-a img-fluid">
+                </div>
+                <div class="card-overlay">
+                  <div class="card-overlay-a-content">
+                    <div class="card-header-a">
+                      <h2 class="card-title-a">
+                        <a href="property-single.html">204 Montal
+                          <br /> South Bela Two</a>
+                      </h2>
                     </div>
-                    <a href="property-single.html" class="link-a">Clique aqui para ver
-                      <span class="ion-ios-arrow-forward"></span>
-                    </a>
-                  </div>
-                  <div class="card-footer-a">
-                    <ul class="card-info d-flex justify-content-around">
-                      <li>
-                        <h4 class="card-info-title">Área</h4>
-                        <span>340m
-                          <sup>2</sup>
-                        </span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Banheiros</h4>
-                        <span>2</span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Quartos</h4>
-                        <span>4</span>
-                      </li>
-                      <li>
-                        <h4 class="card-info-title">Garagem</h4>
-                        <span>1</span>
-                      </li>
-                    </ul>
+                    <div class="card-body-a">
+                      <div class="price-box d-flex">
+                        <span class="price-a">Preço | R$: 12.000</span>
+                      </div>
+                      <a href="property-single.html" class="link-a">Clique aqui para ver
+                        <span class="ion-ios-arrow-forward"></span>
+                      </a>
+                    </div>
+                    <div class="card-footer-a">
+                      <ul class="card-info d-flex justify-content-around">
+                        <li>
+                          <h4 class="card-info-title">Área</h4>
+                          <span>340m
+                            <sup>2</sup>
+                          </span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Banheiros</h4>
+                          <span>2</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Quartos</h4>
+                          <span>4</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Garagem</h4>
+                          <span>1</span>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> -->
+          {% endfor %}
         </div>
       </div>
     </section><!-- End Latest Properties Section -->
