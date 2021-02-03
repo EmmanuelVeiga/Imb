@@ -107,8 +107,8 @@
         <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
-              <h1 class="title-single">304 Blaster Up</h1>
-              <span class="color-text-a">Chicago, IL 606543</span>
+              <h1 class="title-single">{{ imovel.titulo }}</h1>
+              <span class="color-text-a">{{ imovel.localizacao }}</span>
             </div>
           </div>
           <div class="col-md-12 col-lg-4">
@@ -136,15 +136,17 @@
         <div class="row">
           <div class="col-sm-12">
             <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+            {% for item in imovel.imagem_imoveis.all %}
               <div class="carousel-item-b">
-                <img src="{% static 'assets/img/slide-2.jpg' %}" alt="">
+                <img src="{{ item.imagem.url }}" alt="">
+              </div>
+            {% endfor %}
+              <!-- <div class="carousel-item-b">
+                <img src="{ static 'assets/img/slide-3.jpg' %}" alt="">
               </div>
               <div class="carousel-item-b">
-                <img src="{% static 'assets/img/slide-3.jpg' %}" alt="">
-              </div>
-              <div class="carousel-item-b">
-                <img src="{% static 'assets/img/slide-1.jpg' %}" alt="">
-              </div>
+                <img src="{ static 'assets/img/slide-1.jpg' %}" alt="">
+              </div> -->
             </div>
             <div class="row justify-content-between">
               <div class="col-md-5 col-lg-4">
