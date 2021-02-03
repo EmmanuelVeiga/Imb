@@ -7,23 +7,20 @@ from django.views.generic import ListView, TemplateView, DetailView, RedirectVie
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from rimov.usuario.models import Usuario
 from rimov.utils.decorators import LoginRequiredMixin, StaffRequiredMixin
+from .forms import UsuarioForm
 
 
 class UsuarioListView(ListView):
     model = Usuario
 
 
-
 class UsuarioCreateView(CreateView):
     model = Usuario
-    fields = ['tipo', 'avatar', 'nome', 'numero_cri', 'telefone', 'email', 'password', 'is_active']
-    success_url = 'usuario:usuario_list' 
+    form_class = UsuarioForm
+    success_url = 'usuario:usuario_list'
 
     def get_success_url(self):
         messages.success(self.request, 'Usuário cadastrado com sucesso na plataforma!')
-        #return reverse(self.success_url)
-
-
 
 
 class UsuarioUpdateView(UpdateView):
