@@ -37,10 +37,10 @@ class Usuario(AbstractBaseUser):
                             default='CORRETOR', help_text='* Campos obrigatórios')
     avatar = models.ImageField(default='media/media/avatar.jpg', upload_to='media/')  # , blank=True) # null=True)
     nome = models.CharField(_('Nome completo *'), max_length=100)
-    numero_cri = models.CharField(_('Registro CRI *'), max_length=100)
-    telefone = models.CharField(_('Telefone'), max_length=100)    
-    instagram = models.CharField(_('Instagram'),max_length=300, default='some_value', blank=True)
-    facebook = models.CharField(_('Facebook'),max_length=300, default='some_value', blank=True) 
+    numero_cri = models.CharField(_('Registro CRI *'), max_length=100, blank=True, null=True)
+    telefone = models.CharField(_('Telefone'), max_length=100, blank=True, null=True)    
+    instagram = models.CharField(_('Instagram'),max_length=300, default='some_value', blank=True, null=True)
+    facebook = models.CharField(_('Facebook'),max_length=300, default='some_value', blank=True, null=True) 
     email = models.EmailField(_('Email'), unique=True, max_length=100, db_index=True)   
 
     is_active = models.BooleanField(_('Ativo'), default=False,

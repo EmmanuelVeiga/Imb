@@ -49,21 +49,21 @@ NEGOCIO = (
 
 
 class Imovel(models.Model):
-    titulo = models.CharField(max_length=250,)
-    propriedade = models.TextField(choices=TIPO_PROPRIEDADE)
-    negocio = models.TextField(choices=NEGOCIO)
-    categoria = models.TextField(choices=CATEGORIA)
-    valor = models.DecimalField(max_digits=8, decimal_places=2, default='some_value', blank=True)
-    localizacao = models.CharField(max_length=300, blank=True)
-    endereco = models.CharField(max_length=300, blank=True)
-    area = models.IntegerField(null=True, blank=True)
-    num_quarto = models.IntegerField(null=True, blank=True)
-    num_banheiro = models.IntegerField(null=True, blank=True)
-    num_vaga = models.IntegerField(null=True, blank=True)
-    descricao = models.TextField(unique=True, blank=True)
-    corretor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True)
+    titulo = models.CharField(max_length=250)
+    propriedade = models.TextField(choices=TIPO_PROPRIEDADE, blank=True, null=True)
+    negocio = models.TextField(choices=NEGOCIO, blank=True, null=True)
+    categoria = models.TextField(choices=CATEGORIA, blank=True, null=True)
+    valor = models.DecimalField(max_digits=8, decimal_places=2, default='some_value', blank=True, null=True)
+    localizacao = models.CharField(max_length=300, blank=True, blank=True, null=True)
+    endereco = models.CharField(max_length=300, blank=True, blank=True, null=True)
+    area = models.IntegerField(null=True, blank=True, blank=True, null=True)
+    num_quarto = models.IntegerField(null=True, blank=True, blank=True, null=True)
+    num_banheiro = models.IntegerField(null=True, blank=True, blank=True, null=True)
+    num_vaga = models.IntegerField(null=True, blank=True, blank=True, null=True)
+    descricao = models.TextField(unique=True, blank=True, blank=True, null=True)
+    corretor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     status = models.TextField(choices=STATUS)
-    video = models.CharField(max_length=3000, default='', blank=True)
+    video = models.CharField(max_length=3000, default='', blank=True, null=True)
 
     def imagens_url(self):
         if self.imagens and hasattr(self.imagens, 'url'):

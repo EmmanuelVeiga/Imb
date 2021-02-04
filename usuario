@@ -1,11 +1,11 @@
 from rimov.usuario.models import Usuario
 u = Usuario()
-u.nome = 'Admin'
+u.nome = 'Admin1'
 u.tipo = 'ADMINISTRADOR'
-u.email = 'admin@email.com'
+u.email = 'mano@email.com'
 u.is_active = True
 u.save()
-u.set_password('123456')
+u.set_password('1')
 
 
 
@@ -21,6 +21,19 @@ i.negocio = 'Venda'
 i.categoria = 'Baixo Padrão'
 i.status = 'Disponível'
 i.save()
-
-
+i.titulo = models.CharField(max_length=250,)
+i.propriedade = models.TextField(choices=TIPO_PROPRIEDADE)
+i.negocio = models.TextField(choices=NEGOCIO)
+i.categoria = models.TextField(choices=CATEGORIA)
+i.valor = models.DecimalField(max_digits=8, decimal_places=2, default='some_value', blank=True)
+i.localizacao = models.CharField(max_length=300, blank=True)
+i.endereco = models.CharField(max_length=300, blank=True)
+i.area = models.IntegerField(null=True, blank=True)
+i.num_quarto = models.IntegerField(null=True, blank=True)
+i.num_banheiro = models.IntegerField(null=True, blank=True)
+i.num_vaga = models.IntegerField(null=True, blank=True)
+i.descricao = models.TextField(unique=True, blank=True)
+i.corretor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True)
+i.status = models.TextField(choices=STATUS)
+i.video = models.CharField(max_length=3000, default='', blank=True)
 
