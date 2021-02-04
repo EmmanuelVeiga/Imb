@@ -25,7 +25,7 @@ class UsuarioCreateView(CreateView):
 
 class UsuarioUpdateView(UpdateView):
     model = Usuario
-    fields = ['tipo', 'avatar', 'nome', 'numero_cri', 'telefone', 'email', 'is_active', 'password']
+    fields = ['tipo', 'avatar', 'nome', 'numero_cri', 'telefone', 'instagram', 'facebook', 'email', 'is_active', 'password']
     success_url = 'usuario:usuario_list'
 
     def get_success_url(self):

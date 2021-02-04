@@ -38,8 +38,10 @@ class Usuario(AbstractBaseUser):
     avatar = models.ImageField(default='media/media/avatar.jpg', upload_to='media/')  # , blank=True) # null=True)
     nome = models.CharField(_('Nome completo *'), max_length=100)
     numero_cri = models.CharField(_('Registro CRI *'), max_length=100)
-    telefone = models.CharField(_('Telefone'), max_length=100)
-    email = models.EmailField(_('Email'), unique=True, max_length=100, db_index=True)
+    telefone = models.CharField(_('Telefone'), max_length=100)    
+    instagram = models.CharField(_('Instagram'),max_length=300, default='some_value', blank=True)
+    facebook = models.CharField(_('Facebook'),max_length=300, default='some_value', blank=True) 
+    email = models.EmailField(_('Email'), unique=True, max_length=100, db_index=True)   
 
     is_active = models.BooleanField(_('Ativo'), default=False,
                                     help_text='Se ativo, o usuário tem permissão para acessar o sistema')

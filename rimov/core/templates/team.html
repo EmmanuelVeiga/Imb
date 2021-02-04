@@ -92,9 +92,9 @@
           </li>
         </ul>
       </div>
-      <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
-        <span class="fa fa-key" aria-hidden="true"></span>
-      </button>
+      <div class="botoes">
+        <a href="usuario/login/" class="btn btn-md btn-warning"><i class="fa fa-key"></i></a>
+      </div>
     </div>
   </nav><!-- End Header/Navbar -->
 
@@ -202,6 +202,8 @@
                    
                   </p>
                   <div class="info-agents color-a">
+                    <br>
+                    <br>
                     <p>
                       <strong>Telefone: </strong>{{usuario.telefone}}</p>
                     <p>
@@ -212,20 +214,15 @@
                   <div class="socials-footer d-flex justify-content-center">
                     <ul class="list-inline">
                       <li class="list-inline-item">
-                        <a href="#" class="link-one">
+                        <a href="{{usuario.facebook}}" class="link-one">
                           <i class="fa fa-facebook" aria-hidden="true"></i>
                         </a>
                       </li>
                       <li class="list-inline-item">
-                        <a href="#" class="link-one">
-                          <i class="fa fa-twitter" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#" class="link-one">
+                        <a href="{{usuario.instagram}}" class="link-one">
                           <i class="fa fa-instagram" aria-hidden="true"></i>
                         </a>
-                      </li>
+                      </li>                      
                     </ul>
                   </div>
                 </div>

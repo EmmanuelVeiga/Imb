@@ -6,3 +6,21 @@ u.email = 'admin@email.com'
 u.is_active = True
 u.save()
 u.set_password('123456')
+
+
+
+
+
+IMOVEL
+
+
+i = Imovel()
+i.titulo = 'Admin'
+i.propriedade = 'Casa'
+i.negocio = 'Venda'
+i.categoria = 'Baixo Padrão'
+i.status = 'Disponível'
+i.save()
+
+
+

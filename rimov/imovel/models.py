@@ -53,15 +53,17 @@ class Imovel(models.Model):
     propriedade = models.TextField(choices=TIPO_PROPRIEDADE)
     negocio = models.TextField(choices=NEGOCIO)
     categoria = models.TextField(choices=CATEGORIA)
-    localizacao = models.CharField(max_length=300)
-    endereco = models.CharField(max_length=300)
+    valor = models.DecimalField(max_digits=8, decimal_places=2, default='some_value', blank=True)
+    localizacao = models.CharField(max_length=300, blank=True)
+    endereco = models.CharField(max_length=300, blank=True)
     area = models.IntegerField(null=True, blank=True)
     num_quarto = models.IntegerField(null=True, blank=True)
     num_banheiro = models.IntegerField(null=True, blank=True)
     num_vaga = models.IntegerField(null=True, blank=True)
-    descricao = models.TextField(unique=True)
-    corretor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    descricao = models.TextField(unique=True, blank=True)
+    corretor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True)
     status = models.TextField(choices=STATUS)
+    video = models.CharField(max_length=3000, default='', blank=True)
 
     def imagens_url(self):
         if self.imagens and hasattr(self.imagens, 'url'):

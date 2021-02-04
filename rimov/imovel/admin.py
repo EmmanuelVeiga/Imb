@@ -16,6 +16,7 @@ class ImovelAdmin(admin.ModelAdmin):
         'propriedade',
         'negocio',
         'categoria',
+        'valor',
         'localizacao',
         'endereco',
         'area',
@@ -24,7 +25,8 @@ class ImovelAdmin(admin.ModelAdmin):
         'num_vaga',
         'descricao',
         'corretor',
-        'status'
+        'status',
+        'video'
     )
     list_display_links = ('titulo',)
     list_filter = ('status',)

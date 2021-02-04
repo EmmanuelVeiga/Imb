@@ -115,13 +115,13 @@
                   <div class="row">
                     <div class="col-lg-8">
                       <div class="intro-body">
-                        <p class="intro-title-top">{{imovel.localizacao}}
-                          <br> 78345</p>
+                        <p class="intro-title-top">
+                          <br></p>
                         <h1 class="intro-title mb-4">
-                          <span class="color-b">{{imovel.id}} </span> {{ imovel.titulo|truncatechars:25 }}
+                          <span class="color-b">{{imovel.id}} </span> {{ imovel.titulo|truncatechars:15 }}
                           <br> {{imovel.endereco|truncatechars:25}}</h1>
                         <p class="intro-subtitle intro-price">
-                          <a href="#"><span class="price-a">Preço | R$: 12.000</span></a>
+                          <a href="#"><span class="price-a">Preço | R$: {{imovel.valor}}</span></a>
                         </p>
                       </div>
                     </div>
@@ -292,12 +292,12 @@
                     <div class="card-header-a">
                       <h2 class="card-title-a">
                         <a href="property-single.html">{{ imovel.titulo }}
-                          <br /> {{ imovel.localizacao }}</a>
+                          <br /> {{ imovel.localizacao|truncatechars:25 }}</a>
                       </h2>
                     </div>
                     <div class="card-body-a">
                       <div class="price-box d-flex">
-                        <span class="price-a">Preço | R$: 12.000</span>
+                        <span class="price-a">Preço | R$: {{imovel.valor}}</span>
                       </div>
                       <a href="{% url 'core:psingle' imovel.id %}" class="link-a">Clique aqui para ver
                         <span class="ion-ios-arrow-forward"></span>
@@ -307,21 +307,21 @@
                       <ul class="card-info d-flex justify-content-around">
                         <li>
                           <h4 class="card-info-title">Área</h4>
-                          <span>340m
+                          <span>{{ imovel.area }}m
                             <sup>2</sup>
                           </span>
                         </li>
                         <li>
                           <h4 class="card-info-title">Banheiros</h4>
-                          <span>2</span>
+                          <span>{{ imovel.num_banheiro }}</span>
                         </li>
                         <li>
                           <h4 class="card-info-title">Quartos</h4>
-                          <span>4</span>
+                          <span>{{ imovel.num_quarto }}</span>
                         </li>
                         <li>
                           <h4 class="card-info-title">Garagem</h4>
-                          <span>1</span>
+                          <span>{{ imovel.num_vaga }}</span>
                         </li>
                       </ul>
                     </div>
@@ -344,7 +344,7 @@
                     </div>
                     <div class="card-body-a">
                       <div class="price-box d-flex">
-                        <span class="price-a">Preço | R$: 12.000</span>
+                        <span class="price-a">Preço | R$: {{imovel.valor}}</span>
                       </div>
                       <a href="property-single.html" class="link-a">Clique aqui para ver
                         <span class="ion-ios-arrow-forward"></span>
@@ -391,7 +391,7 @@
                     </div>
                     <div class="card-body-a">
                       <div class="price-box d-flex">
-                        <span class="price-a">Preço | R$: 12.000</span>
+                        <span class="price-a">Preço | R$: {{imovel.valor}}</span>
                       </div>
                       <a href="property-single.html" class="link-a">Clique aqui para ver
                         <span class="ion-ios-arrow-forward"></span>
@@ -475,7 +475,7 @@
       </div>
     </section><!-- End Latest Properties Section -->
 
-    <!-- ======= Agents Section ======= -->
+    <!-- ======= Agents Section =======
     <section class="section-agents section-t8">
       <div class="container">
         <div class="row">
@@ -495,15 +495,14 @@
         <div class="row">
           <div class="col-md-4">
             <div class="card-box-d">
-              <div class="card-img-d">
+              <div class="card-img-d">                
                 <img src="{% static 'img/agent-4.jpg' %}" alt="" class="img-d img-fluid">
               </div>
               <div class="card-overlay card-overlay-hover">
                 <div class="card-header-d">
                   <div class="card-title-d align-self-center">
                     <h3 class="title-d">
-                      <a href="agent-single.html" class="link-two">Margaret Sotillo
-                        <br> Escala</a>
+                      <a href="agent-single.html" class="link-two">{{usuario.nome}}</a>
                     </h3>
                   </div>
                 </div>
@@ -513,9 +512,9 @@
                   </p>
                   <div class="info-agents color-a">
                     <p>
-                      <strong>Telefone: </strong> +54 356 945234</p>
+                      <strong>Telefone: </strong>{{usuario.telefone}}</p>
                     <p>
-                      <strong>Email: </strong> agents@example.com</p>
+                      <strong>Email: </strong>{{usuario.email}}</p>
                   </div>
                 </div>
                 <div class="card-footer-d">
@@ -536,22 +535,12 @@
                           <i class="fa fa-instagram" aria-hidden="true"></i>
                         </a>
                       </li>
-                      <li class="list-inline-item">
-                        <a href="#" class="link-one">
-                          <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#" class="link-one">
-                          <i class="fa fa-dribbble" aria-hidden="true"></i>
-                        </a>
-                      </li>
                     </ul>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
+              </div>              
+            </div>                      
+          </div>          
           <div class="col-md-4">
             <div class="card-box-d">
               <div class="card-img-d">
@@ -672,7 +661,7 @@
           </div>
         </div>
       </div>
-    </section><!-- End Agents Section -->
+    </section> End Agents Section -->
 
      <!--/ Videos Clientes /-->
   <section class="section-testimonials section-t8 nav-arrow-a">
