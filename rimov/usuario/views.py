@@ -14,9 +14,10 @@ class UsuarioListView(ListView):
     model = Usuario
 
 
+
 class UsuarioCreateView(CreateView):
     model = Usuario
-    fields = UsuarioForm
+    form_class = UsuarioForm
     success_url = 'usuario:usuario_list'
     
 
