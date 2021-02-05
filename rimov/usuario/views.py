@@ -16,8 +16,9 @@ class UsuarioListView(ListView):
 
 class UsuarioCreateView(CreateView):
     model = Usuario
-    form_class = UsuarioForm
+    fields = '__all__'
     success_url = 'usuario:usuario_list'
+    
 
     def get_success_url(self):
         messages.success(self.request, 'Usuário cadastrado com sucesso na plataforma!')
