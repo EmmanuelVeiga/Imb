@@ -16,7 +16,7 @@ class UsuarioListView(ListView):
 
 class UsuarioCreateView(CreateView):
     model = Usuario
-    fields = '__all__'
+    fields = UsuarioForm
     success_url = 'usuario:usuario_list'
     
 
