@@ -17,14 +17,14 @@ class Command(BaseCommand):
             dest='is_super_user',
             default=None,
             action='store_true',
-            help_text='Booleano define se é super usuário ou não.',
+            help='Booleano define se é super usuário ou não.',
         )
         parser.add_argument(
             '--corretor',
             dest='corretor',
             default=None,
             action='store_true',
-            help_text='Booleano define se é corretor ou não.',
+            help='Booleano define se é corretor ou não.',
         )
 
     def handle(self, *args, **options):
