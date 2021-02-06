@@ -38,4 +38,7 @@ class Funcionario(models.Model):
         return self.usuario.email
 
     def get_absolute_url(self):
-        return reverse_lazy('usuario:usuario_list')  # , args=[str(self.pk)]
+        return reverse_lazy('usuario:funcionario_update', args=[str(self.pk)])
+
+    def get_delete_url(self):
+        return reverse_lazy('usuario:funcionario_delete', args=[str(self.pk)])

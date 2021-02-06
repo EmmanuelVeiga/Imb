@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+Confirmação de exclusão
+{% endblock %}
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  Você tem certeza que quer excluir o funcionário <b>{{ funcionario.nome }}</b>? <br><br>
+  <button type="button" style="margin-left: 300px">
+    <a href="{% url 'usuario:funcionario_list' %}">Cancelar</a>
+  </button>
+  <button>Excluir</button>
+</form>
+{% endblock %}

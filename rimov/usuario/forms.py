@@ -15,7 +15,7 @@ class UserAdminCreationForm(UserCreationForm):
     first_name = forms.CharField(label='Nome')
     last_name = forms.CharField(label='Sobrenome')
     email = forms.CharField(label='E-mail')
-    # cpf = forms.CharField(label='CPF')  # UserProfile
+    # avatar = forms.FileField(required=False)
 
     class Meta:
         model = User

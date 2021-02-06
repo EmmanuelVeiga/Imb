@@ -1,0 +1,76 @@
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<!DOCTYPE html>
+<html style="border-top-color: var(--gray);">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Cadastro de Usuário</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/styleslg.min.css">
+  <style type="text/css">
+  input[type=text] {
+    text-transform: uppercase;
+  }
+
+  span.required:after {
+    content: "*";
+    color: red;
+  }
+  </style>
+</head>
+
+<body style="width: 800px;height: 300px;margin: 168px;">
+  <!-- Start: Profile Edit Form -->
+  <div class="container profile profile-view" id="profile">
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for field in form.visible_fields %}
+      <div class="form-group{% if field.errors %} has-error {% endif %}">
+        <label for="{{ field.id_for_label }}">
+          {% if field.field.required %}
+          <span class="required">{{ field.label }} </span>
+          {% else %}
+          {{ field.label }}
+          {% endif %}
+        </label>
+        {% render_field field class="form-control" %}
+        {% for error in field.errors %}
+        <span class="text-muted">{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      <hr>
+      <div class="col-md-12 content-right" style="margin-left: 360px;">
+        <button class="btn btn-danger form-btn" onClick="history.go(-1)">SAIR</button>
+        <button class="btn btn-primary form-btn" type="submit">SALVAR</button></div>
+  </div>
+  </form>
+  </div><!-- End: Profile Edit Form -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/scriptlg.min.js"></script>
+</body>
+
+</html>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+<script>
+$(document).ready(function() {
+
+  var SPMaskBehavior = function(val) {
+      return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+    },
+    spOptions = {
+      onKeyPress: function(val, e, field, options) {
+        field.mask(SPMaskBehavior.apply({}, arguments), options);
+      }
+    };
+  $('#id_telefone').mask(SPMaskBehavior, spOptions);
+
+});
+</script>
+{% endblock %}

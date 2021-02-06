@@ -1,44 +1,40 @@
 {% extends 'base.html' %}
-{% load static %} 
-{% load bootstrap %}
+{% load static %}
+{% load widget_tweaks %}
 {% block content %}
-
 <style>
-    .t{
+  .t{
         text-align: center;
     }
     input, textarea {
     text-transform: uppercase;
 }
 </style>
-    <div class="container">
-        <div class="t">
-            <h1>Editar Imóvel Nº: {{imovel.id}}</h1>
-        </div>
-        <div>
-            <form action="" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-            {{form.titulo | bootstrap}}
-            {{form.propriedade | bootstrap}}
-            {{form.negocio | bootstrap}}
-            {{form.categoria | bootstrap}}
-            {{form.valor | bootstrap}}
-            <label for="imagem">Imagens:</label> <input type="file" name="imagem" multiple="">
-            {{form.video | bootstrap}}
-            {{form.localizacao | bootstrap}}
-            {{form.endereco | bootstrap}}
-            {{form.area | bootstrap}}
-            {{form.num_quarto | bootstrap}}
-            {{form.num_banheiro | bootstrap}}
-            {{form.num_vaga | bootstrap}}
-            {{form.descricao | bootstrap}}
-            {{form.corretor | bootstrap}}
-            {{form.status | bootstrap}} 
-
-            <br>               
-        		<input type="button" value="Voltar" style="margin-left: 1090px;" class="btn btn-danger" onClick="history.go(-1)">  <input type="submit" class="btn btn-success" value="Atualizar">
-            </form>
-            
-        </div>
-    </div>
+<div class="container">
+  <div class="t">
+    <h1>Editar Imóvel Nº: {{imovel.id}}</h1>
+  </div>
+  <div>
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for field in form.visible_fields %}
+      <div class="form-group{% if field.errors %} has-error {% endif %}">
+        <label for="{{ field.id_for_label }}">
+          {% if field.field.required %}
+          <span class="required">{{ field.label }} </span>
+          {% else %}
+          {{ field.label }}
+          {% endif %}
+        </label>
+        {% render_field field class="form-control" %}
+        {% for error in field.errors %}
+        <span class="text-muted">{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      <label for="imagens">Imagens:</label> <input type="file" name="imagens" multiple="">
+      <input type="button" value="Voltar" style="margin-left: 1100px;" class="btn btn-info" onClick="history.go(-1)"> <input type="submit" class="btn btn-success" value="Salvar">
+    </form>
+  </div>
+</div>
 {% endblock %}
