@@ -21,3 +21,9 @@ python contrib/env_gen.py
 python manage.py migrate
 python manage.py shell_plus
 ```
+
+
+## Links
+
+[Django: Save username equal email - salvar username igual email](https://gist.github.com/rg3915/0b97308cf0123ac73b58a8bd1b584c59)
+
