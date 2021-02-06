@@ -5,8 +5,8 @@ from django.urls import reverse_lazy
 
 class Funcionario(models.Model):
     TIPOS_USUARIOS = (
-        ('ADMINISTRADOR', 'Administrador'),
-        ('CORRETOR', 'Corretor'),
+        ('ADM', 'Administrador'),
+        ('COR', 'Corretor'),
     )
     usuario = models.OneToOneField(User, verbose_name='usuário', on_delete=models.CASCADE)
     tipo = models.CharField(

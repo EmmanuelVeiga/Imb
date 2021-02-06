@@ -22,6 +22,20 @@ python manage.py migrate
 python manage.py shell_plus
 ```
 
+Leia o [passo-a-passo](passo.md)
+
+## Criar usuário
+
+```
+python manage.py criar_usuario --email "admin@email.com" --password "1234" --is_super_user
+
+python manage.py criar_usuario --email "joao@email.com" \
+--password "1234" \
+--first_name="João" \
+--last_name="Silva" \
+--corretor
+```
+
 
 ## Links
 

@@ -16,7 +16,7 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ('first_name', 'last_name', 'email', 'cri')
 
     def get_tipo(self, instance):
-        return instance.funcionario.tipo
+        return instance.funcionario.get_tipo_display()
     get_tipo.short_description = 'Tipo'
 
     def get_inline_instances(self, request, obj=None):
