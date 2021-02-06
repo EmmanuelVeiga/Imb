@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # APPS INTERNO
     'rimov.core',
     'rimov.usuario',
+    'rimov.imovel',
 ]
 
 MIDDLEWARE = [
