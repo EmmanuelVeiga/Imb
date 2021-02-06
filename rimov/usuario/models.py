@@ -39,8 +39,8 @@ class Usuario(AbstractBaseUser):
     nome = models.CharField(_('Nome completo *'), max_length=100)
     numero_cri = models.CharField(_('Registro CRI *'), max_length=100, blank=True, null=True)
     telefone = models.CharField(_('Telefone'), max_length=100, blank=True, null=True)
-    instagram = models.CharField(_('Perfil Instagram *'), max_length=100, null=True)
-    facebook = models.CharField(_('Perfil Facebook *'), max_length=100, null=True)
+    instagram = models.CharField(_('Perfil Instagram *'), max_length=400, null=True)
+    facebook = models.CharField(_('Perfil Facebook *'), max_length=400, null=True)
     email = models.EmailField(_('Email'), unique=True, max_length=100, db_index=True)   
 
     is_active = models.BooleanField(_('Ativo'), default=False,

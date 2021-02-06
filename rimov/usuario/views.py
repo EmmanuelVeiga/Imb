@@ -1,3 +1,4 @@
+from django.urls import reverse_lazy
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login
@@ -14,15 +15,12 @@ class UsuarioListView(ListView):
     model = Usuario
 
 
-
 class UsuarioCreateView(CreateView):
     model = Usuario
+    template_name = 'usuario/usuario_form.html'
     form_class = UsuarioForm
-    success_url = 'usuario:usuario_list'
-    
-
-    def get_success_url(self):
-        messages.success(self.request, 'Usuário cadastrado com sucesso na plataforma!')
+    success_url = reverse_lazy("usuario:usuario_list")   
+        
 
 
 class UsuarioUpdateView(UpdateView):
