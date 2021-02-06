@@ -5,7 +5,7 @@ u.tipo = 'ADMINISTRADOR'
 u.email = 'admin@email.com'
 u.is_active = True
 u.save()
-u.set_password('1')
+u.set_password('d')
 u.save()
 
 

@@ -53,7 +53,7 @@ class Imovel(models.Model):
     propriedade = models.TextField(choices=TIPO_PROPRIEDADE, blank=True, null=True)
     negocio = models.TextField(choices=NEGOCIO, blank=True, null=True)
     categoria = models.TextField(choices=CATEGORIA, blank=True, null=True)
-    valor = models.DecimalField(max_digits=8, decimal_places=2, default='some_value', blank=True, null=True)
+    valor = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
     localizacao = models.CharField(max_length=300, blank=True, null=True)
     endereco = models.CharField(max_length=300, blank=True, null=True)
     area = models.IntegerField(blank=True, null=True)
@@ -63,16 +63,16 @@ class Imovel(models.Model):
     descricao = models.TextField(unique=True, blank=True, null=True)
     corretor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     status = models.TextField(choices=STATUS)
-    video = models.CharField(max_length=3000, default='some_value', blank=True, null=True)
+    video = models.CharField(max_length=3000, blank=True, null=True)
 
     def imagens_url(self):
         if self.imagens and hasattr(self.imagens, 'url'):
             return self.imagens.url
 
     class Meta:
-        verbose_name = "Imóvel"
-        verbose_name_plural = "Imóveis"
         ordering = ['-pk']
+        verbose_name = "imóvel"
+        verbose_name_plural = "imóveis"
 
     def __str__(self):
         return self.titulo
