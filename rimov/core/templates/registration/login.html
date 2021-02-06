@@ -1,8 +1,6 @@
 {% load static %}
-{% load bootstrap %}
-
 <style>
-    body {
+  body {
     font-family: "Lato", sans-serif;
 }
 .main-head{
@@ -62,23 +60,22 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
 <div class="sidenav">
-         <div class="login-main-text">
-          <p class="centered"><a href=""><img src="{% static 'img/logoRS.jpg' %}" class="rounded" width="470"></a></p>
-         </div>
-      </div>
-      <div class="main">
-         <div class="col-md-6 col-sm-12">
-            <div class="login-form">
-               <form method="post">
-                {% csrf_token %}
-                {{form|bootstrap}}
-                <div class="botoes" style="margin-left: 137px;">
-                    <a href="/" class="btn btn-danger" role="button">VOLTAR</a>                   
-                    <button type="submit" class="btn btn-black">LOGIN</button>
-                </div>                                 
-               </form> 
-            </div>
-         </div>
-      </div>
+  <div class="login-main-text">
+    <p class="centered"><a href=""><img src="{% static 'img/logoRS.jpg' %}" class="rounded" width="470"></a></p>
+  </div>
+</div>
+<div class="main">
+  <div class="col-md-6 col-sm-12">
+    <div class="login-form">
+      <form method="post">
+        {% csrf_token %}
+        {{form}}
+        <div class="botoes" style="margin-left: 137px;">
+          <a href="/" class="btn btn-danger" role="button">VOLTAR</a>
+          <button type="submit" class="btn btn-black">LOGIN</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
