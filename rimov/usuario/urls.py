@@ -15,7 +15,7 @@ urlpatterns = [
         # {'next_page': settings.LOGOUT_REDIRECT_URL},
         name='logout'
     ),
-    path('add/', v.FuncionarioCreateView.as_view(), name='funcionario_create'),
+    path('add/', v.funcionario_create, name='funcionario_create'),
     path('<int:pk>/update/', v.FuncionarioUpdateView.as_view(), name='funcionario_update'),
     path('<int:pk>/delete/', v.FuncionarioDeleteView.as_view(), name='funcionario_delete'),
 ]

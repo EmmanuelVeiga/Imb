@@ -1,16 +1,13 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse_lazy
+from .constants import TIPOS_USUARIOS
 
 
 class Funcionario(models.Model):
-    TIPOS_USUARIOS = (
-        ('ADM', 'Administrador'),
-        ('COR', 'Corretor'),
-    )
     usuario = models.OneToOneField(User, verbose_name='usuário', on_delete=models.CASCADE)
     tipo = models.CharField(
-        'tipo do usuário',
+        'tipo de funcionário',
         max_length=15,
         choices=TIPOS_USUARIOS,
         default='CORRETOR',

@@ -1,11 +1,10 @@
-from django.urls import reverse_lazy
-from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import login
-from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import ListView, TemplateView, DetailView, RedirectView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.views.generic import ListView
+from django.views.generic.edit import UpdateView, DeleteView
 from .models import Funcionario
 from .forms import UserAdminCreationForm
 
@@ -14,11 +13,27 @@ class FuncionarioListView(ListView):
     model = Funcionario
 
 
-class FuncionarioCreateView(CreateView):
-    model = Funcionario
+def funcionario_create(request):
+    form = UserAdminCreationForm(request.POST or None)
     template_name = 'usuario/funcionario_form.html'
-    form_class = UserAdminCreationForm
-    success_url = reverse_lazy("usuario:funcionario_list")
+
+    if form.is_valid():
+        # Pega email para filtrar User.
+        email = form.cleaned_data['email']
+        user = User.objects.filter(email=email).first()
+        if user:
+            msg = 'Email já cadastro. Favor fazer login.'
+            messages.error(request, msg)
+            return redirect(reverse_lazy('usuario:login'))
+        else:
+            user = form.save()
+            # Cria Funcionario
+            funcionario, _ = Funcionario.objects.get_or_create(
+                usuario=user,
+                cri=form.cleaned_data['cri']
+            )
+        return redirect(reverse_lazy('usuario:funcionario_list'))
+    return render(request, template_name, {'form': form})
 
 
 class FuncionarioUpdateView(UpdateView):
@@ -27,7 +42,8 @@ class FuncionarioUpdateView(UpdateView):
     success_url = 'usuario:funcionario_list'
 
     def get_success_url(self):
-        messages.success(self.request, 'Dados do usuário atualizados com sucesso na plataforma!')
+        msg = 'Dados do usuário atualizados com sucesso.'
+        messages.success(self.request, msg)
         return reverse(self.success_url)
 
 
@@ -45,5 +61,5 @@ class FuncionarioDeleteView(DeleteView):
         try:
             self.object.delete()
         except Exception as e:
-            messages.error(request, 'Há dependências ligadas à esse usuário, permissão negada!')
+            messages.error(request, 'Há dependências ligadas a esse usuário, permissão negada.')
         return redirect(self.success_url)
