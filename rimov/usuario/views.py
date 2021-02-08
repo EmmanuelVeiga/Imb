@@ -30,7 +30,12 @@ def funcionario_create(request):
             # Cria Funcionario
             funcionario, _ = Funcionario.objects.get_or_create(
                 usuario=user,
-                cri=form.cleaned_data['cri']
+                tipo=form.cleaned_data['tipo'],
+                avatar=form.cleaned_data['avatar'],
+                cri=form.cleaned_data['cri'],
+                telefone=form.cleaned_data['telefone'],
+                instagram=form.cleaned_data['instagram'],
+                facebook=form.cleaned_data['facebook'],
             )
         return redirect(reverse_lazy('usuario:funcionario_list'))
     return render(request, template_name, {'form': form})
