@@ -12,8 +12,13 @@ class FuncionarioInline(admin.StackedInline):
 
 class CustomUserAdmin(UserAdmin):
     inlines = (FuncionarioInline, )
-    list_display = ('username', 'first_name', 'last_name', 'is_staff',  'get_tipo')
+    list_display = ('username', 'first_name', 'last_name', 'is_staff', 'get_tipo')
     search_fields = ('first_name', 'last_name', 'email', 'cri')
+
+    def save_model(self, request, obj, form, change):
+        obj.username = obj.email
+        obj.save()
+        super().save_model(request, obj, form, change)
 
     def get_tipo(self, instance):
         return instance.funcionario.get_tipo_display()
