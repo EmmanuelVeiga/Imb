@@ -1,102 +1,140 @@
-{% extends 'painel.html' %}
+{% extends "base.html" %}
 {% load static %}
-{% block imoveldetail %}
-<!DOCTYPE html>
-<html style="height: 600px;">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Dados Imóvel nº: {{imovel.id}}</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/assets/css/style.min.css?h=8aa63f690ae3a790c3ea3ff10274bc6f">
-</head>
-<style>
-</style>
-<h1 align="center">Dados do Imóvel nº:{{imovel.id}}</h1>
-
-<body class="m-auto" style="width: 1000px;height: 700px;margin: 50px;">
-  <form class="mx-auto">
-    <div class="form-row">
-      <div class="col-sm-4 visible" style="padding: 5px;margin: 0px;">
-        <div class="form-group">
-          <label>Título:</label>
-          <div class="form-control" type="text">{{imovel.titulo|truncatechars:25}}</div>
-          <label>Propriedade:</label>
-          <div class="form-control" type="text">{{imovel.propriedade}}</div>
-          <label>Negócio:</label>
-          <div class="form-control" type="text">{{imovel.negocio}}</div>
-          <label>Categoria:</label>
-          <div class="form-control" type="text">{{imovel.categoria}}</div>
-          <label>Preço:</label>
-          <div class="form-control" type="text">{{imovel.valor}}</div>
+{% block content %}
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        {{ imovel.titulo }}
+        <div class="btn-group float-right">
+          <button class="btn btn-setting dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon-settings"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+        <span class="pull-right btn btn-sm btn-primary mr-2">
+          <i class="fa fa-edit"></i> Editar
+        </span>
+        <span class="badge badge-success pull-right mr-2">Disponível</span>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6">
+            <img src="{{ imovel.first_image.imagem.url }}" width="200px">
+          </div>
+          <div class="col-6">
+            <h4><small><span class="text-muted">Negócio:</span></small>
+              {{ imovel.negocio }}
+            </h4>
+            <h4><small><span class="text-muted">Categoria:</span></small>
+              {{ imovel.categoria }}
+            </h4>
+            <h4><small><span class="text-muted">Propriedade:</span></small>
+              {{ imovel.propriedade }}
+            </h4>
+          </div>
         </div>
       </div>
-      <div class="col-sm-4 visible" style="padding: 5px;margin: 0px;">
-        <div class="form-group">
-          <label>Disponibilidade:</label>
-          <div class="form-control" type="text">{{imovel.status}}</div>
-          <label>Área:</label>
-          <div class="form-control" type="text">{{imovel.area}}</div>
-          <label>Quarto(s):</label>
-          <div class="form-control" type="text">{{imovel.num_quarto}}</div>
-          <label>Banheiro(s):</label>
-          <div class="form-control" type="text">{{imovel.num_banheiro}}</div>
-          <label>Vaga(s):</label>
-          <div class="form-control" type="text">{{imovel.num_vaga}}</div>
-        </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h4>{{ imovel.titulo }}</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item no-border"><span class="text-muted">Localização:</span> {{ imovel.localizacao }}</li>
+            <li class="list-group-item no-border"><span class="text-muted">Label:</span> Lorem ipsum</li>
+            <li class="list-group-item no-border"><span class="text-muted">Label:</span> Lorem ipsum</li>
+          </ul>
+        </li>
+        <li class="list-group-item">
+          <h4>Title</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item no-border"><span class="text-muted">Label:</span> Lorem ipsum</li>
+            <li class="list-group-item no-border"><span class="text-muted">Label:</span> Lorem ipsum</li>
+            <li class="list-group-item no-border"><span class="text-muted">Label:</span> Lorem ipsum</li>
+          </ul>
+        </li>
+        <li class="list-group-item">
+          <h4>Observation</h4>
+          <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, ex, corrupti! Assumenda, distinctio quasi magnam delectus qui et illum reiciendis ea consequuntur mollitia? Mollitia in enim labore consectetur nostrum corrupti.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- <div class="col-lg-3">
+    <div class="card">
+      <div class="card-header">
+        Contacts
+        <span class="pull-right badge badge-success i-is-link" data-toggle="modal" data-target="#mymodal"><i class="fa fa-plus"></i> Add</span>
       </div>
-      <div class="col-sm-4 visible" style="padding: 5px;margin: 0px;">
-        <div class="form-group mt-auto">
-          <label>Corretor(a):</label>
-          <div class="form-control" type="text">{{imovel.corretor.nome}}</div>
-          <label>Localização:</label>
-          <div class="form-control" type="text">{{imovel.localizacao|truncatechars:25}}</div>
-          <label>Rua:</label>
-          <div class="form-control" type="text">{{ imovel.endereco|truncatechars:25 }}</div>
-          <label>Descrição:</label>
-          <label>Video:</label>
-          <div class="form-control" type="text" style="height: 110px;">{{imovel.video}}</div>
-        </div>
-        <br>
-        <br>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item no-border">
+            <span class="badge badge-warning">type</span> 11 98765-4321
+            <span class="span-is-link pull-right" data-toggle="modal" data-target="#mymodal">
+              <i class="fa fa-edit" style="margin-left: 10px;"></i>
+            </span>
+          </li>
+        </ul>
       </div>
     </div>
-  </form>
-  <div class="container-fluid">
-    <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="0">
-      <div class="carousel-inner row w-100 mx-auto" role="listbox">
-        <div class="box">
-          <h4 align="center">Imagens</h4>
-          {% for item in imovel.imagem_imoveis.all %}
-          <!-- {{ iterador.campo }} -->
-          {% if item.imagem %}
-          <img class="img-fluid mx-auto" src="{{ item.imagem.url }}" width="120">
-          <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-            <i class="fa fa-chevron-left fa-lg text-muted"></i>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next">
-            <i class="fa fa-chevron-right fa-lg text-muted"></i>
-            <span class="sr-only">Next</span>
-          </a>
-          {% endif %}
-          {% endfor %}
-        </div>
+    <div class="card">
+      <div class="card-header">
+        Title
+        <span class="pull-right badge badge-success i-is-link" data-toggle="modal" data-target="#mymodal"><i class="fa fa-plus"></i> Add</span>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item no-border li-line pl-0 pr-0">
+                <span class="text-muted">Label:</span> <span class="lead">text</span>
+                <span class="span-is-link float-right" data-toggle="modal" data-target="#mymodal">
+                  <i class="fa fa-edit" style="margin-left: 10px;"></i>
+                </span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div> -->
+  <div class="col-lg-3">
+    <div class="card">
+      <div class="card-header">
+        Corretor
+        <span class="pull-right badge badge-success i-is-link" data-toggle="modal" data-target="#mymodal"><i class="fa fa-plus"></i> Adicionar</span>
+      </div>
+      <div>
+        <!-- card-body -->
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item no-border li-line pl-0 pr-0">
+                <span class="lead">{{ imovel.corretor.usuario.get_full_name }}</span>
+                <span class="span-is-link pull-right" data-toggle="modal" data-target="#mymodal">
+                  <i class="fa fa-edit" style="margin-left: 10px;"></i>
+                </span>
+              </li>
+              <li class="list-group-item no-border li-line pl-0 pr-0"><span class="text-muted"></span> {{ imovel.corretor.telefone }}</li>
+              <!-- <li class="list-group-item no-border li-line pl-0 pr-0"><span class="text-muted">Label:</span> text</li>
+              <li class="list-group-item no-border li-line pl-0 pr-0"><span class="text-muted">Label:</span> text</li>
+              <li class="list-group-item no-border li-line pl-0 pr-0"><span class="text-muted">Label:</span>
+                <span class="badge badge-success">Yes</span>
+              </li>
+              <li class="list-group-item li-line pl-0 pr-0">
+                <span class="text-muted">Observation:</span>
+                <p class="text-justify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda tenetur alias cupiditate dicta blanditiis facilis rerum animi at unde, fugit. Aliquid quos, id illo autem praesentium. Amet reprehenderit rerum, veritatis.</p>
+              </li> -->
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-  <br>
-  <br>
-  <div id="buttons" style="margin-left: 850px" ;>
-    <button class="btn btn-danger ml-auto" type="button" onClick="history.go(-1)">Voltar</button>
-    <a href="{% url 'imovel:imovel_update' imovel.id %}"><i class="btn btn-primary ml-auto" type="button">Editar</i></a>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js"></script>
-  <script src="/assets/js/script.min.js?h=1745396bee1879ea35a44befd4ef930c"></script>
-</body>
-
-</html>
-{% endblock %}
+</div>
+<!-- Modal -->
+{% include "includes/modal.html" %}
+{% endblock content %}

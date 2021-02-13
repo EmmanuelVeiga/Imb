@@ -49,7 +49,7 @@
             {% for imovel in imoveis %}
               <tr>
                 <td>
-                  <a href="{ url 'core:detail' %}">{{ imovel.titulo }}</a>
+                  <a href="{% url 'imovel:imovel_detail' imovel.pk %}">{{ imovel.titulo }}</a>
                 </td>
                 <td>{{ imovel.negocio }}</td>
                 <td>{{ imovel.categoria }}</td>
@@ -61,7 +61,7 @@
                     <span class="badge badge-danger">Indisponível</span>
                   {% endif %}
                 </td>
-                <td>{{ imovel.corretor.get_full_name }}</td>
+                <td>{{ imovel.corretor.usuario.get_full_name }}</td>
                 <td>{{ imovel.localizacao }}</td>
                 <td>
                   <img src="{{ imovel.first_image.imagem.url }}" alt="" height="80px">
