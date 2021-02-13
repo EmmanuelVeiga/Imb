@@ -1,35 +1,17 @@
 {% extends 'painel.html' %}
 {% load static %}
-{% block imoveis %}
-<!DOCTYPE html>
-<html>
 
-<head>
-  <title>Lista de Imóveis</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
+{% block imoveislist %}
 
 <body>
-  <style>
-  .botoes-items {
-    display: inline-block;
-    margin-left: 900px;
-  }
-  </style>
   <div class="container">
     <div align="center">
       <h2 id="cad">Lista de Imóveis</h2>
     </div>
     <div class="botoes-items">
-      <div class="botoes">
-        <a href="{% url 'imovel:imovel_create' %}" class="btn btn-md btn-success">Cadastrar Imóvel</a>
+      <div class="botoes" style="margin-left: 920px;">
         <a href="/painel" class="btn btn-danger" role="button">Voltar</a>
+        <a href="{% url 'imovel:imovel_create' %}" class="btn btn-md btn-success">Cadastrar Imóvel</a>
       </div>
       <br>
     </div>
