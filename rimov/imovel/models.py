@@ -12,8 +12,8 @@ def get_file_path(instance, filename):
 
 
 STATUS = (
-    ("Disponível", "Disponível"),
-    ("Indisponível", "Indisponível")
+    ("D", "Disponível"),
+    ("I", "Indisponível")
 
 )
 TIPO_PROPRIEDADE = (
