@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block css %}
+<style>
+  input, textarea {
+    text-transform: uppercase;
+  }
+  span.required:after {
+    content: "*";
+    color: red;
+  }
+</style>
+{% endblock css %}
+{% block content %}
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-header">
+        <strong>Imóvel</strong>
+        <!-- <small>Form</small> -->
+      </div>
+      <div class="card-body">
+        <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {% for field in form.visible_fields %}
+          <div class="form-group{% if field.errors %} has-error {% endif %}">
+            <label for="{{ field.id_for_label }}">
+              {% if field.field.required %}
+              <span class="required">{{ field.label }} </span>
+              {% else %}
+              {{ field.label }}
+              {% endif %}
+            </label>
+            {% render_field field class="form-control" %}
+            {% for error in field.errors %}
+            <span class="text-muted">{{ error }}</span>
+            {% endfor %}
+          </div>
+          {% endfor %}
+          <label for="imagens">Imagens:</label> <input type="file" name="imagens" multiple="">
+          <input type="button" value="Voltar" style="margin-left: 1100px;" class="btn btn-info" onClick="history.go(-1)"> <input type="submit" class="btn btn-success" value="Salvar">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

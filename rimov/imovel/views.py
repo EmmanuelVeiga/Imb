@@ -21,7 +21,7 @@ def imovel_create(request):
             for file in files:
                 Galeria.objects.create(imovel=imovel, imagem=file)
             return redirect('imovel:imovel_list')
-    return render(request, 'imovel/imovel_create.html', {'form': form})
+    return render(request, 'imovel/imovel_form.html', {'form': form})
 
 
 def imovel_detail(request, id):
