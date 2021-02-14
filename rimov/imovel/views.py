@@ -1,14 +1,17 @@
-from .forms import ImovelForm
-from .models import Imovel, Galeria
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView
+from .forms import ImovelForm
+from .models import Imovel, Galeria
 
 
 def imovel_list(request):
     imoveis = Imovel.objects.all()
+    msg_success = 'Item deletado com sucesso.'
+    messages.success(request, msg_success)
     return render(request, 'imovel/imovel_list.html', {"imoveis": imoveis})
 
 
@@ -46,11 +49,9 @@ def imovel_update(request, id):
 
 
 def imovel_delete(request, id):
-    form = ImovelForm(request.POST)
     imovel = Imovel.objects.get(id=id)
     imovel.delete()
     return redirect('imovel:imovel_list')
-    return render(request, 'imovel/imovel_delete.html', {'form': form})
 
 
 def login_page(request):

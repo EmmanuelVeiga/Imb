@@ -46,3 +46,7 @@ python manage.py criar_usuario --email "joao@email.com" \
 Usamos [How to Add User Profile To Django Admin](https://simpleisbetterthancomplex.com/tutorial/2016/11/23/how-to-add-user-profile-to-django-admin.html)
 
 [django-widget-tweaks](https://pypi.org/project/django-widget-tweaks/)
+
+[sweetalert2](https://sweetalert2.github.io/)
+
+[Adiciona mensagem de sucesso no template do Django](https://gist.github.com/rg3915/407577c42bcee93dd8d58a64bd2ba3b0)

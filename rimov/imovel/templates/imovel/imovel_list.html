@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
+
+  {% for message in messages %}
+    {% if 'success' in message.tags %}
+    <p class="alert alert-success" role="alert"><span style="font-weight:bold">{{ message }}</span></p>
+    {% else %}
+    <p class="alert alert-warning" role="alert"><span style="font-weight:bold">{{ message }}</span></p>
+    {% endif %}
+  {% endfor %}
+
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -70,6 +80,9 @@
                   <a href="{% url 'imovel:imovel_update' imovel.pk %}">
                     <i class="fa fa-edit"></i>
                   </a>
+                  <span class="ml-2">
+                    <i class="fa fa-trash no delete" data-url="{% url 'imovel:imovel_delete' imovel.id %}"></i>
+                  </span>
                 </td>
               </tr>
             {% endfor %}
@@ -82,3 +95,28 @@
   </div>
 </div>
 {% endblock content %}
+
+{% block js %}
+  <script>
+    $('.delete').click(function() {
+      const url = $(this).data("url");
+      Swal.fire({
+        title: 'Deseja deletar este item?',
+        showCancelButton: true,
+        confirmButtonText: `Sim`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          // Swal.fire('Saved!', '', 'success')
+          window.location.href = url
+        }
+      })
+    });
+
+    window.setTimeout(function() {
+      $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+      });
+    }, 3000);
+  </script>
+{% endblock js %}
