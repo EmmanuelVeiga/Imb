@@ -10,8 +10,6 @@ from .models import Imovel, Galeria
 
 def imovel_list(request):
     imoveis = Imovel.objects.all()
-    msg_success = 'Item deletado com sucesso.'
-    messages.success(request, msg_success)
     return render(request, 'imovel/imovel_list.html', {"imoveis": imoveis})
 
 
@@ -35,17 +33,16 @@ def imovel_detail(request, id):
 def imovel_update(request, id):
     imovel = get_object_or_404(Imovel, pk=id)
     form = ImovelForm(instance=imovel)
-    if(request.method == 'POST'):
+    if request.method == 'POST':
         form = ImovelForm(request.POST, request.FILES, instance=imovel)
 
-        if(form.is_valid()):
+        if form.is_valid():
             imovel = form.save(commit=False)
             imovel.save()
             return redirect('imovel:imovel_list')
-        else:
-            return render(request, 'imovel/imovel_update.html', {'form': form, 'imovel': imovel})
-    elif(request.method == 'GET'):
-        return render(request, 'imovel/imovel_update.html', {'form': form, 'imovel': imovel})
+
+    context = {'form': form, 'imovel': imovel}
+    return render(request, 'imovel/imovel_form.html', context)
 
 
 def imovel_delete(request, id):

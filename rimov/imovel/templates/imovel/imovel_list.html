@@ -6,7 +6,7 @@
   {% for message in messages %}
     {% if 'success' in message.tags %}
     <p class="alert alert-success" role="alert"><span style="font-weight:bold">{{ message }}</span></p>
-    {% else %}
+    {% elif 'warning' in message.tags %}
     <p class="alert alert-warning" role="alert"><span style="font-weight:bold">{{ message }}</span></p>
     {% endif %}
   {% endfor %}
