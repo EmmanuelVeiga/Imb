@@ -36,6 +36,13 @@ python manage.py criar_usuario --email "joao@email.com" \
 --corretor
 ```
 
+## Como criar uma nova branch a partir da master
+
+```
+git checkout master  # caso não esteja na master
+git checkout -b nova_branch
+```
+
 
 ## Links
 
