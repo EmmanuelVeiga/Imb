@@ -58,7 +58,8 @@
     background-color: #01888b !important;
     color: #fff;}
 </style>
-{% endblock %}
+{% endblock css %}
+{% block content %}
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -69,8 +70,8 @@
   </div>
 </div>
 <div class="main">
-    <div class="col-md-6 col-sm-12">
-        <div class="login-form">
+  <div class="col-md-6 col-sm-12">
+    <div class="login-form">
           {% csrf_token %}
           {% for field in form.visible_fields %}
           <div class="form-group{% if field.errors %} has-error {% endif %}">
@@ -87,10 +88,10 @@
             {% endfor %}
           </div>
           {% endfor %}
-
-          <div class="botoes">
-          <a href="/" class="btn btn-danger" role="button">VOLTAR</a>
-          <button type="submit" class="btn btn-black">LOGIN</button>
+          <input type="button" value="VOLTAR" class="btn btn-info" onClick="history.go(-1)"> <input type="submit" class="btn btn-success" value="LOGIN">
         </div>
+      </div>
     </div>
-</div>
+  </dir>
+</dir>
+{% endblock %}

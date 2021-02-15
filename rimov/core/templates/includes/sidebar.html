@@ -1,11 +1,15 @@
+{% load static %}
 <div class="sidebar">
   <nav class="sidebar-nav">
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'core:painel' %}">
+        <!--<a class="nav-link" href="{% url 'core:painel' %}">
           <i class="nav-icon icon-speedometer"></i> Dashboard
-          <!-- <span class="badge badge-primary">NEW</span> -->
-        </a>
+          <!-- <span class="badge badge-primary">NEW</span>
+        </a>-->
+        <br>
+        <p><a href=""><img src="{% static 'img/logoRS.jpg' %}" width="190"></a></p>
+        <br>
       </li>
       <li class="nav-title">Imóveis</li>
       <li class="nav-item">
