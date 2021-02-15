@@ -1,4 +1,6 @@
 {% load static %}
+{% load widget_tweaks %}
+{% block css %}
 <style>
   body {
     font-family: "Lato", sans-serif;
@@ -56,6 +58,7 @@
     background-color: #01888b !important;
     color: #fff;}
 </style>
+{% endblock %}
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -66,16 +69,28 @@
   </div>
 </div>
 <div class="main">
-  <div class="col-md-6 col-sm-12">
-    <div class="login-form">
-      <form method="post">
-        {% csrf_token %}
-        {{form}}
-        <div class="botoes" style="margin-left: 137px;">
+    <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+          {% csrf_token %}
+          {% for field in form.visible_fields %}
+          <div class="form-group{% if field.errors %} has-error {% endif %}">
+            <label for="{{ field.id_for_label }}">
+              {% if field.field.required %}
+              <span class="required">{{ field.label }} </span>
+              {% else %}
+              {{ field.label }}
+              {% endif %}
+            </label>
+            {% render_field field class="form-control" %}
+            {% for error in field.errors %}
+            <span class="text-muted">{{ error }}</span>
+            {% endfor %}
+          </div>
+          {% endfor %}
+
+          <div class="botoes">
           <a href="/" class="btn btn-danger" role="button">VOLTAR</a>
           <button type="submit" class="btn btn-black">LOGIN</button>
         </div>
-      </form>
     </div>
-  </div>
 </div>
