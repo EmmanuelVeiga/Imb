@@ -1,44 +1,42 @@
-{% extends 'painel.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block content %}
-<!DOCTYPE html>
-<html>
 
-<head>
-  <title>Lista de Usuários</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
 
-<body>
-  <style>
-  .botoes-items {
-    display: inline-block;
-    margin-left: 900px;
-  }
-  </style>
-  <div class="container">
-    <div align="center">
-      <h2 id="cad">Lista de Usuários</h2>
-    </div>
-    <div class="botoes-items">
-      <div class="botoes">
-        <a href="{% url 'usuario:funcionario_create' %}" class="btn btn-md btn-success">Cadastrar Usuário</a>
-        <a href="/painel" class="btn btn-danger" role="button">Voltar</a></div>
-      <br>
-    </div>
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-sm-12">
-          <table id="dataTables-service-order" class="table table-striped table-bordered table-hover" data-url="">
-            <thead>
-              <tr>
-                <th>ID</th>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        Imóveis
+        <span class="float-right">1 of 10 resultados (100 total)</span>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-auto">
+            <a class="btn btn-primary" href="{% url 'usuario:funcionario_create' %}">
+              <i class="fa fa-plus"></i>
+              Adicionar
+            </a>
+          </div>
+          <div class="col">
+            <form action="." method="GET">
+              <div class="row">
+                <div class="col p-ari-5">
+                  <input name="search" class="form-control mb-2" type="text" placeholder="Busca..." />
+                </div>
+                <div class="col-auto">
+                  <button class="btn btn-success mb-2" type="submit">OK</button>
+                  <button class="btn btn-link mb-2">Limpar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- TABLE -->
+        <table class="table table-responsive-sm table-hover table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
                 <th>NOME</th>
                 <th>TELEFONE</th>
                 <th>CRI</th>
@@ -46,13 +44,13 @@
                 <th>EMAIL</th>
                 <th>TIPO</th>
                 <th>AÇÃO</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for funcionario in object_list %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for funcionario in object_list %}
               <tr>
                 <td>{{ funcionario.id }}</td>
-                <td>{{ funcionario.usuario.get_full_name }}</td>
+                <td><a href="{% url 'usuario:funcionario_detail' funcionario.pk %}">{{ funcionario.usuario.get_full_name }}</a></td>
                 <td>{{ funcionario.telefone }}</td>
                 <td>{{ funcionario.cri }}</td>
                 <td>{% if funcionario.avatar %}<img src="{{ funcionario.avatar.url }}" alt="" width="50px">{% endif %}</td>
@@ -65,7 +63,14 @@
                   </div>
                 </td>
               </tr>
-            </tbody>
-            {% endfor %}
-          </table>
-          {% endblock %}
+          </tbody>
+          {% endfor %}
+        </table>
+        <!-- pagination -->
+        {% include "includes/pagination.html" %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+

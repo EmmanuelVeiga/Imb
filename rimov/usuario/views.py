@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.urls import reverse_lazy
 from django.views.generic import ListView
@@ -39,6 +39,11 @@ def funcionario_create(request):
             )
         return redirect(reverse_lazy('usuario:funcionario_list'))
     return render(request, template_name, {'form': form})
+
+def funcionario_detail(request, id):
+    funcionario = get_object_or_404(Funcionario, pk=id)
+    return render(request, 'usuario/funcionario_detail.html', {'funcionario': funcionario})
+
 
 
 class FuncionarioUpdateView(UpdateView):

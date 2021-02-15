@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-header">
+        {{ funcionario.nome }}        
+        <a class="pull-right btn btn-sm btn-primary mr-2" style="color: white" href="{% url 'usuario:funcionario_update' funcionario.pk %}">
+          <i class="fa fa-edit"></i> Editar
+        </a>
+        <span class="badge badge-success pull-right mr-2">Ativo</span>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6">
+            <img src="{{ funcionario.avatar.url }}" width="200px">
+          </div>
+          <div class="col-6">
+            <h4><small><span class="text-muted">Tipo:</span></small>
+              {{ funcionario.tipo }}
+            </h4>
+            <h4><small><span class="text-muted">Nome:</span></small>
+              {{ funcionario.usuario.get_full_name }}
+            </h4>
+            <h4><small><span class="text-muted">CRI:</span></small>
+              {{ funcionario.cri }}
+            </h4>
+            <h4><small><span class="text-muted">Telefone:</span></small>
+              {{ funcionario.telefone }}
+            </h4>
+            <h4><small><span class="text-muted">Email:</span></small>
+              {{ funcionario.usuario }}
+            </h4>
+          </div>
+        </div>
+      </div>
+      <ul class="list-group list-group-flush">
+        
+        <li class="list-group-item">
+          <h4 align="center">Redes Sociais</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item no-border"><span class="text-muted">Facebook:</span>{{ funcionario.facebook }}</li>
+            <li class="list-group-item no-border"><span class="text-muted">Instagram:</span>{{ funcionario.instagram }}</li> 
+          </ul>
+        </li>
+       <!--<li class="list-group-item">
+          <h4>Observation</h4>
+          <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, ex, corrupti! Assumenda, distinctio quasi magnam delectus qui et illum reiciendis ea consequuntur mollitia? Mollitia in enim labore consectetur nostrum corrupti.</p>
+        </li>-->
+      </ul>
+    </div>
+  </div>
+  <!-- <div class="col-lg-3">
+    <div class="card">
+      <div class="card-header">
+        Contacts
+        <span class="pull-right badge badge-success i-is-link" data-toggle="modal" data-target="#mymodal"><i class="fa fa-plus"></i> Add</span>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item no-border">
+            <span class="badge badge-warning">type</span> 11 98765-4321
+            <span class="span-is-link pull-right" data-toggle="modal" data-target="#mymodal">
+              <i class="fa fa-edit" style="margin-left: 10px;"></i>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        Title
+        <span class="pull-right badge badge-success i-is-link" data-toggle="modal" data-target="#mymodal"><i class="fa fa-plus"></i> Add</span>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item no-border li-line pl-0 pr-0">
+                <span class="text-muted">Label:</span> <span class="lead">text</span>
+                <span class="span-is-link float-right" data-toggle="modal" data-target="#mymodal">
+                  <i class="fa fa-edit" style="margin-left: 10px;"></i>
+                </span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div> -->
+  <!--<div class="col-lg-3">
+    <div class="card">
+      <div class="card-header">
+        Corretor
+        <span class="pull-right badge badge-success i-is-link" data-toggle="modal" data-target="#mymodal"><i class="fa fa-plus"></i> Adicionar</span>
+      </div>
+      <div>
+         card-body 
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item no-border li-line pl-0 pr-0">
+                <span class="lead">{{ funcionario. }}</span>
+                <span class="span-is-link pull-right" data-toggle="modal" data-target="#mymodal">
+                  <i class="fa fa-edit" style="margin-left: 10px;"></i>
+                </span>
+              </li>
+              <li class="list-group-item no-border li-line pl-0 pr-0"><span class="text-muted"></span> {{ funcionario.telefone }}</li>
+               <li class="list-group-item no-border li-line pl-0 pr-0"><span class="text-muted">Label:</span> text</li>
+              <li class="list-group-item no-border li-line pl-0 pr-0"><span class="text-muted">Label:</span> text</li>
+              <li class="list-group-item no-border li-line pl-0 pr-0"><span class="text-muted">Label:</span>
+                <span class="badge badge-success">Yes</span>
+              </li>
+              <li class="list-group-item li-line pl-0 pr-0">
+                <span class="text-muted">Observation:</span>
+                <p class="text-justify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda tenetur alias cupiditate dicta blanditiis facilis rerum animi at unde, fugit. Aliquid quos, id illo autem praesentium. Amet reprehenderit rerum, veritatis.</p>
+              </li> 
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>-->
+</div>
+<!-- Modal -->
+{% include "includes/modal.html" %}
+{% endblock content %}

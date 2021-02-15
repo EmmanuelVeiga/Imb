@@ -16,6 +16,7 @@ urlpatterns = [
         name='logout'
     ),
     path('add/', v.funcionario_create, name='funcionario_create'),
+    path('<int:id>/', v.funcionario_detail, name='funcionario_detail'),
     path('<int:pk>/update/', v.FuncionarioUpdateView.as_view(), name='funcionario_update'),
     path('<int:pk>/delete/', v.FuncionarioDeleteView.as_view(), name='funcionario_delete'),
 ]

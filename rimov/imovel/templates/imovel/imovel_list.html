@@ -76,13 +76,11 @@
                 <td>
                   <img src="{{ imovel.first_image.imagem.url }}" alt="" height="80px">
                 </td>
-                <td class="text-center">
-                  <a href="{% url 'imovel:imovel_update' imovel.pk %}">
-                    <i class="fa fa-edit"></i>
-                  </a>
-                  <span class="ml-2">
-                    <i class="fa fa-trash no delete" data-url="{% url 'imovel:imovel_delete' imovel.id %}"></i>
-                  </span>
+                <td>
+                  <div class="botoes list">
+                    <a href="{{ imovel.get_absolute_url }}" class="btn btn-primary"><i class="icon-pencil"></i></a>
+                    <a href="{{ imovel.get_delete_url }}" class="btn btn-danger"><i class="icon-trash"></i></a>
+                  </div>
                 </td>
               </tr>
             {% endfor %}
