@@ -72,6 +72,7 @@
 <div class="main">
   <div class="col-md-6 col-sm-12">
     <div class="login-form">
+        <form action="." method="POST">
           {% csrf_token %}
           {% for field in form.visible_fields %}
           <div class="form-group{% if field.errors %} has-error {% endif %}">
@@ -89,6 +90,7 @@
           </div>
           {% endfor %}
           <input type="button" value="VOLTAR" class="btn btn-info" onClick="history.go(-1)"> <input type="submit" class="btn btn-success" value="LOGIN">
+          </form>
         </div>
       </div>
     </div>
