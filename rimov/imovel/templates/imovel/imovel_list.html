@@ -78,8 +78,8 @@
                 </td>
                 <td>
                   <div class="botoes list">
-                    <a href="{{ imovel.get_absolute_url }}" class="btn btn-primary"><i class="icon-pencil"></i></a>
-                    <a href="{{ imovel.get_delete_url }}" class="btn btn-danger"><i class="icon-trash"></i></a>
+                    <a href="{% url 'imovel:imovel_update' imovel.pk %}" class="btn btn-primary"><i class="icon-pencil"></i></a>
+                    <a href="{% url 'imovel:imovel_delete' imovel.pk %}" class="btn btn-danger"><i class="icon-trash"></i></a>
                   </div>
                 </td>
               </tr>
