@@ -385,12 +385,14 @@ a:hover {
 }
 
 .overlay {
+  width: 351px;
+  height: 393px;
+  object-fit: cover;
   position: absolute;
   top: 0;
   left: 0px;
-  padding: 0;
-  height: 100%;
-  width: 100%;
+  padding: 0; 
+  
 }
 
 /*------/ Owl carousel /------*/

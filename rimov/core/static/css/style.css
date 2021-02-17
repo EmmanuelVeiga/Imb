@@ -6234,6 +6234,11 @@ a.close.disabled {
 
 .carousel {
   position: relative;
+  max-width: 100%;
+  width: 1200px;
+  height: 464px;
+  object-fit: cover;
+
 }
 
 .carousel.pointer-event {
