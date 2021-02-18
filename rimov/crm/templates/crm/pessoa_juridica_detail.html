@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        {{ imovel.titulo }}
+        <div class="btn-group float-right">
+          <button class="btn btn-setting dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon-settings"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+        <a class="pull-right btn btn-sm btn-primary mr-2" style="color: white" href="{% url 'imovel:imovel_update' imovel.pk %}">
+          <i class="fa fa-edit"></i> Editar
+        </a>        
+        <span class="badge badge-success pull-right mr-2">Disponível</span>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6">
+            <img src="{{ imovel.first_image.imagem.url }}" width="200px">
+          </div>
+          <br>
+          <div class="col-6">
+            <h4><small><span class="text-muted">Propriedade:</span></small>
+              {{ imovel.propriedade }}
+            </h4>
+            <h4><small><span class="text-muted">Negócio:</span></small>
+              {{ imovel.negocio }}
+            </h4>
+            <h4><small><span class="text-muted">Categoria:</span></small>
+              {{ imovel.categoria }}
+            </h4>
+            <h4><small><span class="text-muted">Valor:</span></small>
+              {{ imovel.valor }}
+            </h4>           
+          </div>
+        </div>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h4>Características</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item no-border"><span class="text-muted">Área:</span> {{ imovel.area }}</li>
+            <li class="list-group-item no-border"><span class="text-muted">Quartos:</span> {{ imovel.num_quarto }}</li>
+            <li class="list-group-item no-border"><span class="text-muted">Banheiros:</span> {{ imovel.num_banheiro }}</li>
+            <li class="list-group-item no-border"><span class="text-muted">Vagas:</span> {{ imovel.num_vaga }}</li>
+          </ul>
+        </li>
+        <li class="list-group-item">
+          <h4>Dados Gerais</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item no-border"><span class="text-muted">Localização Aprox:</span> {{ imovel.localizacao }}</li>
+            <li class="list-group-item no-border"><span class="text-muted">Endereço:</span> {{ imovel.endereco }}</li>
+            <li class="list-group-item no-border"><span class="text-muted">Corretor:</span> {{ imovel.corretor.usuario.get_full_name }}</li>
+          </ul>
+        </li>
+        <li class="list-group-item">
+          <h4>Descrição</h4>
+          <p class="text-justify">{{imovel.descricao}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- <div class="col-lg-3">
+    <div class="card">
+      <div class="card-header">
+        Contacts
+        <span class="pull-right badge badge-success i-is-link" data-toggle="modal" data-target="#mymodal"><i class="fa fa-plus"></i> Add</span>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item no-border">
+            <span class="badge badge-warning">type</span> 11 98765-4321
+            <span class="span-is-link pull-right" data-toggle="modal" data-target="#mymodal">
+              <i class="fa fa-edit" style="margin-left: 10px;"></i>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        Title
+        <span class="pull-right badge badge-success i-is-link" data-toggle="modal" data-target="#mymodal"><i class="fa fa-plus"></i> Add</span>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item no-border li-line pl-0 pr-0">
+                <span class="text-muted">Label:</span> <span class="lead">text</span>
+                <span class="span-is-link float-right" data-toggle="modal" data-target="#mymodal">
+                  <i class="fa fa-edit" style="margin-left: 10px;"></i>
+                </span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div> -->
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        Video:
+        <span class="pull-right badge badge-success i-is-link" data-toggle="modal" data-target="#mymodal"><i class="fa fa-plus"></i> Adicionar</span>
+      </div>
+      <div>
+        <!-- card-body -->
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item no-border li-line pl-0 pr-0">
+                <span class="lead"><b>link:</b> {{imovel.video}}</span>
+                <span class="span-is-link pull-right" data-toggle="modal" data-target="#mymodal">
+                  <i class="fa fa-edit" style="margin-left: 10px;"></i>
+                </span>
+              </li>
+              <span class="text-muted">Imagens:</span>             
+              <li class="list-group-item li-line pl-0 pr-0">
+                <br>                
+                {% for item in imovel.imagem_imoveis.all %}
+                <!-- {{ iterador.campo }} -->
+                  {% if item.imagem %}
+                    <img src="{{ item.imagem.url }}" width="180">
+                  {% endif %}
+                {% endfor %} 
+                <br>
+                
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+{% include "includes/modal.html" %}
+{% endblock content %}

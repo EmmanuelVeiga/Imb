@@ -29,6 +29,15 @@
         <a class="nav-link" href="{% url 'usuario:funcionario_create' %}">
           <i class="nav-icon icon-plus"></i> Cadastrar</a>
       </li>
+      <li class="nav-title">Clientes</li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'crm:pf_list' %}">
+          <i class="nav-icon icon-people"></i> Pessoa Física</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'crm:pj_list' %}">
+          <i class="nav-icon icon-people"></i> Pessoa Jurídica</a>
+      </li>
     </ul>
   </nav>
   <button class="sidebar-minimizer brand-minimizer" type="button"></button>

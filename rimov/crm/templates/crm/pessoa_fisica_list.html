@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        Pessoa Física
+        <span class="float-right">1 of 10 resultados (100 total)</span>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-auto">
+            <a class="btn btn-primary" href="{ url 'crm:pf_create' %}">
+              <i class="fa fa-plus"></i>
+              Adicionar
+            </a>
+          </div>
+          <div class="col">
+            <form action="." method="GET">
+              <div class="row">
+                <div class="col p-ari-5">
+                  <input name="search" class="form-control mb-2" type="text" placeholder="Busca..." />
+                </div>
+                <div class="col-auto">
+                  <button class="btn btn-success mb-2" type="submit">OK</button>
+                  <button class="btn btn-link mb-2">Limpar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- TABLE -->
+        <table class="table table-responsive-sm table-hover table-striped">
+          <thead>
+            <tr>
+              <th>NOME COMPLETO</th>
+              <th>CPF</th>
+              <th class="text-center">AÇÕES</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for object in object_list %}
+              <tr>
+                <td>
+                  <a href="{ url 'crm:pf_detail' object.pk %}">{{ object }}</a>
+                </td>
+                <td>{{ object.cpf|default:'---' }}</td>
+                <td width="120px">
+                  <div class="botoes list">
+                    <a href="{ url 'crm:pf_update' object.pk %}" class="btn btn-primary"><i class="icon-pencil"></i></a>
+                    <a href="{ url 'crm:pf_delete' object.pk %}" class="btn btn-danger"><i class="icon-trash"></i></a>
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <!-- pagination -->
+        {% include "includes/pagination.html" %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+  <script>
+    $('.delete').click(function() {
+      const url = $(this).data("url");
+      Swal.fire({
+        title: 'Deseja deletar este item?',
+        showCancelButton: true,
+        confirmButtonText: `Sim`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          // Swal.fire('Saved!', '', 'success')
+          window.location.href = url
+        }
+      })
+    });
+
+    window.setTimeout(function() {
+      $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+      });
+    }, 3000);
+  </script>
+{% endblock js %}

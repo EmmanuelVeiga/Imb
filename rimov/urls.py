@@ -7,9 +7,9 @@ from django.contrib import admin
 
 urlpatterns = [
     path('', include('rimov.core.urls', namespace='core')),
+    path('crm/', include('rimov.crm.urls', namespace='crm')),
     path('imovel/', include('rimov.imovel.urls', namespace='imovel')),
     path('usuario/', include('rimov.usuario.urls', namespace='usuario')),
-    # path('usuario/', include('django.contrib.auth.urls')),
     path('media/<path>/', serve, {'document_root = settings.MEDIA_ROOT'}),
     path('admin/', admin.site.urls),
 
