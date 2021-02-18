@@ -2,16 +2,15 @@
 {% load static %}
 {% load widget_tweaks %}
 {% block css %}
-
 <style type="text/css">
-  input[type=text] {
-    text-transform: uppercase;
-  }
+input[type=text] {
+  text-transform: uppercase;
+}
 
-  span.required:after {
-    content: "*";
-    color: red;
-  }
+span.required:after {
+  content: "*";
+  color: red;
+}
 </style>
 {% endblock css %}
 {% block content %}
@@ -39,32 +38,20 @@
             <span class="text-muted">{{ error }}</span>
             {% endfor %}
           </div>
-          {% endfor %}          
+          {% endfor %}
           <input type="button" value="Voltar" class="btn btn-info" onClick="history.go(-1)"> <input type="submit" class="btn btn-success" value="Salvar">
         </form>
       </div>
     </div>
   </div>
 </div>
-{% endblock %}
+{% endblock content %}
 
-{% block scripts %}
-<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+{% block js %}
 <script>
-$(document).ready(function() {
-
-  var SPMaskBehavior = function(val) {
-      return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-    },
-    spOptions = {
-      onKeyPress: function(val, e, field, options) {
-        field.mask(SPMaskBehavior.apply({}, arguments), options);
-      }
-    };
-  $('#id_telefone').mask(SPMaskBehavior, spOptions);
-
-  $('input[name=avatar]').removeClass('form-control');
-
-});
+  $(document).ready(function() {
+    $('#id_telefone').mask('(00) 00000-0000');
+    $('input[name=avatar]').removeClass('form-control');
+  });
 </script>
-{% endblock %}
+{% endblock js %}
