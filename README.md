@@ -57,3 +57,5 @@ Usamos [How to Add User Profile To Django Admin](https://simpleisbetterthancompl
 [sweetalert2](https://sweetalert2.github.io/)
 
 [Adiciona mensagem de sucesso no template do Django](https://gist.github.com/rg3915/407577c42bcee93dd8d58a64bd2ba3b0)
+
+[django-orm](https://github.com/rg3915/django-orm)

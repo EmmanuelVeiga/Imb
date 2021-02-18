@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # APPS INTERNO
     'rimov.core',
     'rimov.usuario',
+    'rimov.crm',
     'rimov.imovel',
 ]
 
