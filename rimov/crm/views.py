@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
+from django.views.generic.edit import UpdateView
 from .forms import PessoaFisicaForm, PessoaJuridicaForm
 from .models import PessoaFisica, PessoaJuridica
 
@@ -18,6 +19,12 @@ class PFCreate(CreateView):
     success_url = reverse_lazy('crm:pf_list')
 
 
+class PFUpdate(UpdateView):
+    model = PessoaFisica
+    form_class = PessoaFisicaForm
+    success_url = reverse_lazy('crm:pf_list')
+
+
 def pj_list(request):
     template_name = 'crm/pessoa_juridica_list.html'
     object_list = PessoaJuridica.objects.all()
@@ -26,6 +33,12 @@ def pj_list(request):
 
 
 class PJCreate(CreateView):
+    model = PessoaJuridica
+    form_class = PessoaJuridicaForm
+    success_url = reverse_lazy('crm:pj_list')
+
+
+class PJUpdate(UpdateView):
     model = PessoaJuridica
     form_class = PessoaJuridicaForm
     success_url = reverse_lazy('crm:pj_list')
