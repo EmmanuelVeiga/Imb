@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.views.generic.edit import UpdateView
@@ -25,6 +25,12 @@ class PFUpdate(UpdateView):
     success_url = reverse_lazy('crm:pf_list')
 
 
+def pf_delete(request, pk):
+    pf = PessoaFisica.objects.get(pk=pk)
+    pf.delete()
+    return redirect('crm:pf_list')
+
+
 def pj_list(request):
     template_name = 'crm/pessoa_juridica_list.html'
     object_list = PessoaJuridica.objects.all()
@@ -42,3 +48,9 @@ class PJUpdate(UpdateView):
     model = PessoaJuridica
     form_class = PessoaJuridicaForm
     success_url = reverse_lazy('crm:pj_list')
+
+
+def pj_delete(request, pk):
+    pj = PessoaJuridica.objects.get(pk=pk)
+    pj.delete()
+    return redirect('crm:pj_list')

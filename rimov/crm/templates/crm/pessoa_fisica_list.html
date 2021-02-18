@@ -51,7 +51,7 @@
                 <td width="120px">
                   <div class="botoes list">
                     <a href="{% url 'crm:pf_update' object.pk %}" class="btn btn-primary"><i class="icon-pencil"></i></a>
-                    <a href="{ url 'crm:pf_delete' object.pk %}" class="btn btn-danger"><i class="icon-trash"></i></a>
+                    <span data-url="{% url 'crm:pf_delete' object.pk %}" class="btn btn-danger delete"><i class="icon-trash"></i></span>
                   </div>
                 </td>
               </tr>
