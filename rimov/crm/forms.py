@@ -15,6 +15,7 @@ class PessoaFisicaForm(forms.ModelForm):
             'numero',
             'complemento',
             'bairro',
+            'cidade',
             'cep',
         )
 
@@ -33,5 +34,6 @@ class PessoaJuridicaForm(forms.ModelForm):
             'numero',
             'complemento',
             'bairro',
+            'cidade',
             'cep',
         )
