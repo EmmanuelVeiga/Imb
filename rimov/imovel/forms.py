@@ -1,5 +1,3 @@
-from django.forms import ModelForm
-from django.forms import ClearableFileInput
 from .models import Imovel
 from django import forms
 

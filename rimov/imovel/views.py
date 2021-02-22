@@ -1,9 +1,4 @@
-from django.conf import settings
-from django.contrib import messages
-from django.contrib.auth.models import User
-from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import ListView
 from .forms import ImovelForm
 from .models import Imovel, Galeria
 
@@ -51,25 +46,10 @@ def imovel_delete(request, id):
     return redirect('imovel:imovel_list')
 
 
-def login_page(request):
-    context = {
-        'error_msg': ''
-    }
-
-    if request.user.is_authenticated:
-        return redirect(settings.LOGIN_REDIRECT_URL)
-
-    if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect(settings.LOGIN_URL_REDIRECT)
-        else:
-            context = {
-                'error_msg': 'Senha e/ou usuário inválido.'
-            }
-            return render(request, 'registration/login.html', context)
-
-    return render(request, 'registration/login.html', context)
+def imagem_update(request, id):
+    galeria = Galeria.objects.get(id=id)
+    if request.method == 'POST':
+        imagem = request.FILES.get('imagem')
+        galeria.imagem = imagem
+        galeria.save()
+    return redirect(galeria.imovel)

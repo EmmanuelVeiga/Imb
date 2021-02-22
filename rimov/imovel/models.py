@@ -1,13 +1,6 @@
-import uuid
-import os
 from django.db import models
+from django.urls import reverse_lazy
 from rimov.usuario.models import Funcionario
-
-
-def get_file_path(instance, filename):
-    ext = filename.split(".")[-1]
-    filename = "%s.%s" % (uuid.uuid4(), ext)
-    return os.path.join("imoveis", filename)
 
 
 STATUS = (
@@ -76,6 +69,9 @@ class Imovel(models.Model):
     def __str__(self):
         return self.titulo
 
+    def get_absolute_url(self):
+        return reverse_lazy('imovel:imovel_detail', kwargs={'id': self.id})
+
     def first_image(self):
         if self.imagem_imoveis:
             return self.imagem_imoveis.first()
@@ -83,7 +79,7 @@ class Imovel(models.Model):
 
 class Galeria(models.Model):
     imovel = models.ForeignKey(Imovel, on_delete=models.CASCADE, related_name='imagem_imoveis', null=True)
-    imagem = models.FileField('Imagem', upload_to=get_file_path, blank=False, null=True)
+    imagem = models.FileField('Imagem', upload_to='media', blank=False, null=True)
 
     class Meta:
         verbose_name = "Galeria do Imóvel"

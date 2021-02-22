@@ -11,4 +11,5 @@ urlpatterns = [
     path('<int:id>/', v.imovel_detail, name='imovel_detail'),
     path('<int:id>/update/', v.imovel_update, name='imovel_update'),
     path('<int:id>/delete/', v.imovel_delete, name='imovel_delete'),
+    path('imagem/<int:id>/update/', v.imagem_update, name='imagem_update'),
 ]
