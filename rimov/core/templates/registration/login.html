@@ -1,5 +1,6 @@
 {% load static %}
 {% load widget_tweaks %}
+
 {% block css %}
 <style>
   body {
@@ -7,7 +8,7 @@
 }
 .main-head{
     height: 150px;
-    background: #FFF;   
+    background: #FFF;
 }
 .sidenav {
     height: 100%;
@@ -59,11 +60,11 @@
     color: #fff;}
 </style>
 {% endblock css %}
+
 {% block content %}
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 <div class="sidenav">
   <div class="login-main-text">
     <p class="centered"><a href=""><img src="{% static 'img/logoRS.jpg' %}" class="rounded" width="470"></a></p>
@@ -72,28 +73,26 @@
 <div class="main">
   <div class="col-md-6 col-sm-12">
     <div class="login-form">
-        <form action="." method="POST">
-          {% csrf_token %}
-          {% for field in form.visible_fields %}
-          <div class="form-group{% if field.errors %} has-error {% endif %}">
-            <label for="{{ field.id_for_label }}">
-              {% if field.field.required %}
-              <span class="required">{{ field.label }} </span>
-              {% else %}
-              {{ field.label }}
-              {% endif %}
-            </label>
-            {% render_field field class="form-control" %}
-            {% for error in field.errors %}
-            <span class="text-muted">{{ error }}</span>
-            {% endfor %}
-          </div>
+      <form action="." method="POST">
+        {% csrf_token %}
+        {% for field in form.visible_fields %}
+        <div class="form-group{% if field.errors %} has-error {% endif %}">
+          <label for="{{ field.id_for_label }}">
+            {% if field.field.required %}
+            <span class="required">{{ field.label }} </span>
+            {% else %}
+            {{ field.label }}
+            {% endif %}
+          </label>
+          {% render_field field class="form-control" %}
+          {% for error in field.errors %}
+          <span class="text-muted">{{ error }}</span>
           {% endfor %}
-          <input type="button" value="VOLTAR" class="btn btn-info" onClick="history.go(-1)"> <input type="submit" class="btn btn-success" value="LOGIN">
-          </form>
         </div>
-      </div>
+        {% endfor %}
+        <input type="button" value="VOLTAR" class="btn btn-info" onClick="history.go(-1)"> <input type="submit" class="btn btn-success" value="LOGIN">
+      </form>
     </div>
-  </dir>
-</dir>
+  </div>
+</div>
 {% endblock %}
